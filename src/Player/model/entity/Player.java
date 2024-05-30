@@ -1,4 +1,4 @@
-package gamethefacts.chars;
+package Player.model.entity;
 
 public class Player {
     protected String name;    

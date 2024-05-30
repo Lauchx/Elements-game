@@ -1,6 +1,6 @@
-package gamethefacts.view;
+package Character.view;
 
-import gamethefacts.chars.Character;
+import Character.model.entity.Character;
 import java.util.Scanner;
 
 public class Console {

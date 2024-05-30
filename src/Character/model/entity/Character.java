@@ -1,7 +1,9 @@
-package gamethefacts.chars;
+package Character.model.entity;
 
 
-public class Character extends Player{
+import Player.model.entity.Player;
+
+public class Character extends Player {
     protected int maxHP;
     protected int currentHp;
     protected int armour;

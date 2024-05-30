@@ -1,6 +1,6 @@
-package gamethefacts;
-import gamethefacts.view.Console;
-import gamethefacts.chars.Character;
+package Main;
+import Character.view.Console;
+import Character.model.entity.Character;
 
 public class Program {
 
