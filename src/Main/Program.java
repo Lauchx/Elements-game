@@ -1,25 +1,30 @@
 package Main;
-import Character.view.Console;
-import Character.model.entity.Character;
+
+
+import Class.Map.Model.Entity.Map;
+import Class.Map.Vista.MapView;
+import Class.Player.controller.PlayerControler;
+import Class.Player.model.repository.PlayerRepository;
+import Class.Player.view.PlayerView;
 
 public class Program {
 
     public static void main(String[] args) {
-       Console workWrite = new Console();
-       String name = workWrite.writeName();
-       Character c = new Character(name);
-       workWrite.viewCharacter(c);
+        PlayerRepository playerRepository = new PlayerRepository();
+        PlayerView playerView = new PlayerView();
+        PlayerControler playerControler = new PlayerControler(playerRepository, playerView);
+        MenuGame(playerControler);
+        MapView mapView = new MapView();
+        Map map = new Map();
+        mapView.ShowMap(map);
 
 
+    }
+    static void MenuGame(PlayerControler playerControler)
+    {
+        playerControler.addPlayer();
+        playerControler.ShowPlayer(playerControler.playerRepository);
 
-
-
-
-      /*if(this.nombre.equals(person.nombre) == false)
-       {
-           return false;
-       }
-        /* Es igual a  if(!this.nombre.equals(per.nombre)) quiere decir que mi nombre es distinto*/
 
     }
     
