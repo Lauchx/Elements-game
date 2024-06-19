@@ -17,11 +17,18 @@ public class Map {
     public void setMap(Character[][] map) {
         this.map = map;
     }
-    @Override
-    public String toString()
+    public  Character searchCharacter()
     {
+        for(int i = 0; i< map.length;i++)
+        {
+            for(int j = 0; j< map.length;j++)
+            {
 
-        return "|--|";
-
+                return map[i][j];
+            }
+        }
+        return null;
     }
+
+
 }

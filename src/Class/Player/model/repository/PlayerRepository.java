@@ -21,4 +21,15 @@ public class PlayerRepository {
     public List<Player> getPlayerList() {
         return playerList;
     }
-}
+    public Player returnPlayer()
+    {
+        for(Player p: playerList)
+        {
+            if(p.getId().equals(1)){
+                return p;
+            }
+        }
+        return null;
+    }
+
+    }

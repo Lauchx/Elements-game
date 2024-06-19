@@ -1,7 +1,7 @@
 package Class.Character.model.entity;
 
 public class Character{
-    protected String name;
+    public String name;
     protected int maxHP;
     protected int currentHp;
     protected int armour;
@@ -64,6 +64,12 @@ public class Character{
 
     public void setCurrentDamage(int currentDamage) {
         this.currentDamage = currentDamage;
+    }
+    @Override
+    public String toString()
+    {
+
+        return "|---|";
     }
 
 }

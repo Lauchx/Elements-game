@@ -1,5 +1,6 @@
 package Class.Player.controller;
 
+import Class.Player.model.entity.Player;
 import Class.Player.model.repository.PlayerRepository;
 import Class.Player.view.PlayerView;
 
@@ -19,5 +20,9 @@ public class PlayerControler {
     public void ShowPlayer(PlayerRepository playerRepository)
     {
         this.playerView.ShowPlayer(playerRepository);
+    }
+    public Player returnPlayer()
+    {
+        return this.playerRepository.returnPlayer();
     }
 }

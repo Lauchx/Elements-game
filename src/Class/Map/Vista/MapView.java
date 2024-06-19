@@ -3,7 +3,7 @@ package Class.Map.Vista;
 
 
 import Class.Map.Model.Repository.MapRepository;
-
+import Class.Character.model.entity.Character;
 import java.util.Scanner;
 
 public class MapView {
@@ -14,17 +14,29 @@ public class MapView {
         this.scanner = new Scanner(System.in);
     }
 
-    public void ShowMap(MapRepository[] mapRepository, int n)
+    public void ShowMap(MapRepository mapRepository, int level)
     {
-         for(int i = 0; i< 8; i ++)
-         {
-             System.out.println("________________________________");
-             for(int j = 0; j< 8; j ++)
-             {
-                 System.out.print(mapRepository[n]);
-             }
-             System.out.println(" ");
-         }
+        for(int i = 0; i < mapRepository.mapArray[level].map.length;i++)
+        {
+            for(int j = 0; j < mapRepository.mapArray[level].map.length;j++)
+            {
+                Character character = new Character();
+                character = mapRepository.mapArray[level].map[i][j];
+                if(character == null)
+                {
+                    System.out.print("|   |");
+                }else
+                {
+                    System.out.print(character.toString());
+                }
+            }
+            System.out.println("");
+            System.out.println("----------------------------------------");
+        }
 
+    }
+    public String playerMove()
+    {
+        return this.scanner.nextLine().toLowerCase();
     }
 }
