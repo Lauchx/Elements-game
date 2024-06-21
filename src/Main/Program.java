@@ -1,6 +1,9 @@
 package Main;
 
 
+import Class.Enemy.Controller.EnemyController;
+import Class.Enemy.Model.Repository.EnemyRepository;
+import Class.Enemy.View.EnemyView;
 import Class.Map.Controller.MapController;
 import Class.Map.Model.Entity.Map;
 import Class.Map.Model.Repository.MapRepository;
@@ -18,20 +21,27 @@ public class Program {
         MapRepository mapRepository = new MapRepository(3);
         MapView mapView = new MapView();
         MapController mapController = new MapController(mapRepository, mapView);
-        MenuGame(playerControler, mapController);
+        EnemyView enemyView = new EnemyView();
+        EnemyRepository enemyRepository = new EnemyRepository(3);
+        EnemyController enemyController = new EnemyController(enemyRepository, enemyView);
+        MenuGame(playerControler, mapController, enemyController);
 
 
 
     }
-    static void MenuGame(PlayerControler playerControler, MapController mapController)
+    static void MenuGame(PlayerControler playerControler, MapController mapController,EnemyController enemyController)
     {
         playerControler.addPlayer();
         playerControler.ShowPlayer(playerControler.playerRepository);
 
         mapController.CreateMap(1, playerControler);
-        mapController.show_MapLevel(1);
-        mapController.playerMove(playerControler, 1);
-        mapController.show_MapLevel(1);
+        String uno = "1";
+        enemyController.addEnemys();
+        do
+        {
+            mapController.show_MapLevel(1);
+            mapController.playerMove(playerControler, 1);
+        }while(uno.equals("1"));
 
 
 

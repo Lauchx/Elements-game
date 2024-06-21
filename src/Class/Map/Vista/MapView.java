@@ -39,4 +39,11 @@ public class MapView {
     {
         return this.scanner.nextLine().toLowerCase();
     }
+    public void noMoveMore(boolean yesornot)
+    {
+        if (!yesornot)
+        {
+            System.out.println("No podes atravesar paredes!... Por ahora...");
+        }
+    }
 }

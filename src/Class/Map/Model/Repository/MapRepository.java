@@ -1,9 +1,8 @@
 package Class.Map.Model.Repository;
 
-import Class.Character.model.entity.Character;
+import Class.Map.Controller.MapController;
 import Class.Map.Model.Entity.Map;
 import Class.Player.controller.PlayerControler;
-import Class.Player.model.entity.Player;
 
 public class MapRepository {
     public Map[] mapArray;
@@ -15,17 +14,74 @@ public class MapRepository {
     public void CreateMap(int level, PlayerControler playerControler)
     {
         Map map = new Map();
-        map.map[playerControler.returnPlayer().getPositionX()][playerControler.returnPlayer().getPositionY()] = playerControler.returnPlayer() ;
+        map.map[playerControler.returnPlayer().getPositionX()][playerControler.returnPlayer().getPositionY()] = playerControler.returnPlayer();
         this.addMapLevel(map, level);
     }
     void addMapLevel(Map map, int level)
     {
         this.mapArray[level] = map;
     }
-    public void positionMap(Map map, PlayerControler playerControler, int level)
+    public boolean positionMapY(Map map, PlayerControler playerControler, int level, String move)
     {
-        map.map[playerControler.returnPlayer().getPositionX()][playerControler.returnPlayer().getPositionY()] = null;
-        map.map[playerControler.returnPlayer().getPositionX()][playerControler.returnPlayer().getPositionY() + 1] = playerControler.returnPlayer();
-        this.addMapLevel(map, level);
+        if(move.equals("a"))
+        {
+            if(playerControler.returnPlayer().getPositionY() - 1 >= 0)
+            {
+                map.map[playerControler.returnPlayer().getPositionX()][playerControler.returnPlayer().getPositionY()] = null;
+                map.map[playerControler.returnPlayer().getPositionX()][playerControler.returnPlayer().getPositionY() - 1] = playerControler.returnPlayer();
+                playerControler.returnPlayer().setPositionY(playerControler.returnPlayer().getPositionY() - 1);
+                this.addMapLevel(map, level);
+            }
+            else{
+                return false;
+            }
+        }
+        else
+        {
+            if(playerControler.returnPlayer().getPositionY() + 1 < 8)
+            {
+                map.map[playerControler.returnPlayer().getPositionX()][playerControler.returnPlayer().getPositionY()] = null;
+                map.map[playerControler.returnPlayer().getPositionX()][playerControler.returnPlayer().getPositionY() + 1] = playerControler.returnPlayer();
+                playerControler.returnPlayer().setPositionY(playerControler.returnPlayer().getPositionY() + 1);
+                this.addMapLevel(map, level);
+            }
+            else{
+                return false;
+            }
+
+        }
+        return true;
+    }
+    public boolean positionMapX(Map map, PlayerControler playerControler, int level, String move)
+    {
+        if(move.equals("w"))
+        {
+            if(playerControler.returnPlayer().getPositionX() - 1 >= 0)
+            {
+                map.map[playerControler.returnPlayer().getPositionX()][playerControler.returnPlayer().getPositionY()] = null;
+                map.map[playerControler.returnPlayer().getPositionX() - 1][playerControler.returnPlayer().getPositionY()] = playerControler.returnPlayer();
+                playerControler.returnPlayer().setPositionX(playerControler.returnPlayer().getPositionX() - 1);
+                this.addMapLevel(map, level);
+            }
+            else{
+                return false;
+            }
+        }
+        else
+        {
+            if(playerControler.returnPlayer().getPositionX() + 1 < 8)
+            {
+                map.map[playerControler.returnPlayer().getPositionX()][playerControler.returnPlayer().getPositionY()] = null;
+                map.map[playerControler.returnPlayer().getPositionX() + 1][playerControler.returnPlayer().getPositionY()] = playerControler.returnPlayer();
+                playerControler.returnPlayer().setPositionX(playerControler.returnPlayer().getPositionX() + 1);
+                this.addMapLevel(map, level);
+            }
+            else{
+                return false;
+            }
+
+        }
+        return true;
+
     }
 }

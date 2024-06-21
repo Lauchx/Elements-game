@@ -5,7 +5,7 @@ import Class.Character.model.entity.Character;
 public class Player extends Character {
     public int positionX;
     public int positionY;
-    public Integer id;
+
 
     public Player(String name) {
     super.setName(name);
@@ -16,19 +16,21 @@ public class Player extends Character {
     super.setCurrentDamage(10);
     this.positionX = 0;
     this.positionY = 0;
-    this.id = 1;
 }
-
-    public Integer getId() {
-        return id;
-    }
-
     public int getPositionX() {
         return positionX;
     }
 
     public int getPositionY() {
         return positionY;
+    }
+
+    public void setPositionX(int positionX) {
+        this.positionX = positionX;
+    }
+
+    public void setPositionY(int positionY) {
+        this.positionY = positionY;
     }
 
     @Override

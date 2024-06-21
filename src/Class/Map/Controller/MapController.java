@@ -1,10 +1,8 @@
 package Class.Map.Controller;
 
-import Class.Character.model.entity.Character;
 import Class.Map.Model.Repository.MapRepository;
 import Class.Map.Vista.MapView;
 import Class.Player.controller.PlayerControler;
-import Class.Player.model.entity.Player;
 
 public class MapController {
     public MapRepository mapRepository;
@@ -30,17 +28,23 @@ public class MapController {
         switch (move)
         {
             case "w":
-
+                noMoveMore(this.mapRepository.positionMapX(this.mapRepository.mapArray[1], playerControler, level, move));
                 break;
             case "a":
+                noMoveMore(this.mapRepository.positionMapY(this.mapRepository.mapArray[1], playerControler, level, move));
                 break;
             case "s":
+                noMoveMore(this.mapRepository.positionMapX(this.mapRepository.mapArray[1], playerControler, level, move));
                 break;
             case "d":
-                this.mapRepository.positionMap(this.mapRepository.mapArray[1], playerControler, level);
+                noMoveMore(this.mapRepository.positionMapY(this.mapRepository.mapArray[1], playerControler, level, move));
                 break;
             default:
                 break;
         }
+    }
+    public void noMoveMore(boolean yesornot)
+    {
+        this.mapView.noMoveMore(yesornot);
     }
 }
