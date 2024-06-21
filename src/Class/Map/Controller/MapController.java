@@ -1,5 +1,6 @@
 package Class.Map.Controller;
 
+import Class.Enemy.Controller.EnemyController;
 import Class.Map.Model.Repository.MapRepository;
 import Class.Map.Vista.MapView;
 import Class.Player.controller.PlayerControler;
@@ -13,16 +14,16 @@ public class MapController {
         this.mapView = mapView;
         this.mapRepository = mapRepository;
     }
-    public void CreateMap(int level, PlayerControler playerControler)
+    public void CreateMap(int level, PlayerControler playerControler, EnemyController enemyController)
     {
-        this.mapRepository.CreateMap(level, playerControler);
+        this.mapRepository.CreateMap(level, playerControler, enemyController);
     }
 
     public void show_MapLevel(int level)
     {
         this.mapView.ShowMap(this.mapRepository, level);
     }
-    public void playerMove(PlayerControler playerControler, int level)
+    public void playerMove(PlayerControler playerControler, int level, EnemyController enemyController)
     {
         String move = this.mapView.playerMove();
         switch (move)
@@ -31,13 +32,13 @@ public class MapController {
                 noMoveMore(this.mapRepository.positionMapX(this.mapRepository.mapArray[1], playerControler, level, move));
                 break;
             case "a":
-                noMoveMore(this.mapRepository.positionMapY(this.mapRepository.mapArray[1], playerControler, level, move));
+                noMoveMore(this.mapRepository.positionMapY(this.mapRepository.mapArray[1], playerControler,enemyController ,level, move));
                 break;
             case "s":
                 noMoveMore(this.mapRepository.positionMapX(this.mapRepository.mapArray[1], playerControler, level, move));
                 break;
             case "d":
-                noMoveMore(this.mapRepository.positionMapY(this.mapRepository.mapArray[1], playerControler, level, move));
+                noMoveMore(this.mapRepository.positionMapY(this.mapRepository.mapArray[1], playerControler, enemyController, level, move));
                 break;
             default:
                 break;

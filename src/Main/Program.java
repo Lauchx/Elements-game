@@ -33,14 +33,14 @@ public class Program {
     {
         playerControler.addPlayer();
         playerControler.ShowPlayer(playerControler.playerRepository);
-
-        mapController.CreateMap(1, playerControler);
+        mapController.CreateMap(1, playerControler, enemyController);
         String uno = "1";
-        enemyController.addEnemys();
         do
         {
+            enemyController.addEnemys();
+            enemyController.showEnemy();
             mapController.show_MapLevel(1);
-            mapController.playerMove(playerControler, 1);
+            mapController.playerMove(playerControler, 1, enemyController);
         }while(uno.equals("1"));
 
 

@@ -30,4 +30,17 @@ public class EnemyRepository {
             this.enemyArray[i] = enemy ;
         }
     }
+    public Enemy returnEnemy()
+    {
+        int i = 0;
+        for (Enemy e: this.enemyArray)
+        {
+            if(!e.getDead())
+            {
+                return this.enemyArray[i];
+            }
+            i++;
+        }
+        return null;
+    }
 }
