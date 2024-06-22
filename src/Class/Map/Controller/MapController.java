@@ -29,20 +29,25 @@ public class MapController {
         switch (move)
         {
             case "w":
-                noMoveMore(this.mapRepository.positionMapX(this.mapRepository.mapArray[1], playerControler, level, move));
+                noMoveMore(this.mapRepository.playerPositionMapX(this.mapRepository.mapArray[1], playerControler, level, move));
                 break;
             case "a":
-                noMoveMore(this.mapRepository.positionMapY(this.mapRepository.mapArray[1], playerControler,enemyController ,level, move));
+                noMoveMore(this.mapRepository.playerPositionMapY(this.mapRepository.mapArray[1], playerControler,enemyController ,level, move));
                 break;
             case "s":
-                noMoveMore(this.mapRepository.positionMapX(this.mapRepository.mapArray[1], playerControler, level, move));
+                noMoveMore(this.mapRepository.playerPositionMapX(this.mapRepository.mapArray[1], playerControler, level, move));
                 break;
             case "d":
-                noMoveMore(this.mapRepository.positionMapY(this.mapRepository.mapArray[1], playerControler, enemyController, level, move));
+                noMoveMore(this.mapRepository.playerPositionMapY(this.mapRepository.mapArray[1], playerControler, enemyController, level, move));
                 break;
             default:
                 break;
         }
+    }
+    public void EnemyMove(EnemyController enemyController, int level)
+    {
+        this.mapRepository.enemyPositionMapX(this.mapRepository.mapArray[level], enemyController, level);
+        this.mapRepository.enemyPositionMapY(this.mapRepository.mapArray[level], enemyController, level);
     }
     public void noMoveMore(boolean yesornot)
     {

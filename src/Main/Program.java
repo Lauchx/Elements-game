@@ -22,7 +22,7 @@ public class Program {
         MapView mapView = new MapView();
         MapController mapController = new MapController(mapRepository, mapView);
         EnemyView enemyView = new EnemyView();
-        EnemyRepository enemyRepository = new EnemyRepository(3);
+        EnemyRepository enemyRepository = new EnemyRepository();
         EnemyController enemyController = new EnemyController(enemyRepository, enemyView);
         MenuGame(playerControler, mapController, enemyController);
 
@@ -32,15 +32,17 @@ public class Program {
     static void MenuGame(PlayerControler playerControler, MapController mapController,EnemyController enemyController)
     {
         playerControler.addPlayer();
+        enemyController.addEnemys();
         playerControler.ShowPlayer(playerControler.playerRepository);
         mapController.CreateMap(1, playerControler, enemyController);
         String uno = "1";
         do
         {
-            enemyController.addEnemys();
+
             enemyController.showEnemy();
             mapController.show_MapLevel(1);
             mapController.playerMove(playerControler, 1, enemyController);
+            mapController.EnemyMove(enemyController, 1);
         }while(uno.equals("1"));
 
 

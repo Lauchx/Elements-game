@@ -7,9 +7,9 @@ public class Enemy extends Character {
     public int positionY;
     public boolean dead;
 
-    public Enemy(int x, int y)
+    public Enemy(int x, int y, String name)
     {
-        super.name = "Jefe";
+        super.name = name;
         super.maxHP = 10;
         super.currentHp = 10;
         super.armour = 10;

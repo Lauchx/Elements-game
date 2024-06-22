@@ -2,45 +2,48 @@ package Class.Enemy.Model.Repository;
 
 import Class.Enemy.Model.Entity.Enemy;
 
-import java.util.Random;
+import java.util.ArrayList;
+import java.util.List;
 
 public class EnemyRepository {
-    public Enemy[] enemyArray;
+    public List<Enemy> enemyList;
 
-    public EnemyRepository(int amountEnemys)
+    public EnemyRepository()
     {
-        enemyArray = new Enemy[amountEnemys];
+        enemyList = new ArrayList();
     }
 
-    public Enemy[] getEnemyArray() {
-        return enemyArray;
+    public List<Enemy> getEnemyList() {
+        return enemyList;
     }
 
-    public void setEnemyArray(Enemy[] enemyArray) {
-        this.enemyArray = enemyArray;
+    public void setEnemyList(List<Enemy> enemyList) {
+        this.enemyList = enemyList;
     }
 
     public void addEnemys()
     {
-        for (int i = 0; i < this.enemyArray.length; i++){
+        String[] names = new String[3];
+        names[0] = "Mateicopulus";
+        names[1] = "Leites Dulsus";
+        names[2] = "Asasadolokus";
+        for (int i = 0; i < 3; i++){
             int x = (int)(Math.random()*8);
-            int y = (int)(Math.random()*7+2);
+            int y = (int)(Math.random()*6+2);
 
-            Enemy enemy = new Enemy(x, y);
-            this.enemyArray[i] = enemy ;
+            Enemy enemy = new Enemy(x, y, names[i]);
+
+            this.enemyList.add(enemy);
         }
+
     }
     public Enemy returnEnemy()
     {
-        int i = 0;
-        for (Enemy e: this.enemyArray)
-        {
-            if(!e.getDead())
-            {
-                return this.enemyArray[i];
+            for (Enemy e : this.enemyList) {
+                if (!e.getDead()) {
+                    return e;
+                }
             }
-            i++;
-        }
         return null;
     }
 }
