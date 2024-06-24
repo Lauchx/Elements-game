@@ -11,6 +11,9 @@ import Class.Map.Vista.MapView;
 import Class.Player.controller.PlayerControler;
 import Class.Player.model.repository.PlayerRepository;
 import Class.Player.view.PlayerView;
+import Class.Superpower.Controller.SuperpowerController;
+import Class.Superpower.Model.Repository.SuperpowerRepository;
+import Class.Superpower.View.SuperpowerView;
 
 public class Program {
 
@@ -24,24 +27,29 @@ public class Program {
         EnemyView enemyView = new EnemyView();
         EnemyRepository enemyRepository = new EnemyRepository();
         EnemyController enemyController = new EnemyController(enemyRepository, enemyView);
-        MenuGame(playerControler, mapController, enemyController);
+        SuperpowerController  superpowerController= new SuperpowerController();
+        MenuGame(playerControler, mapController, enemyController,superpowerController );
 
 
 
     }
-    static void MenuGame(PlayerControler playerControler, MapController mapController,EnemyController enemyController)
+    static void MenuGame(PlayerControler playerControler, MapController mapController,EnemyController enemyController, SuperpowerController  superpowerController)
     {
         playerControler.addPlayer();
         enemyController.addEnemys();
-        playerControler.ShowPlayer(playerControler.playerRepository);
+        superpowerController.addSuperpower();
+        playerControler.ShowPlayer();
         mapController.CreateMap(1, playerControler, enemyController);
         String uno = "1";
         do
         {
-
+            //PARA NO SER TAN ROMPE, TENDIRA QUE MOSTRAR SOLAMENTE SI ESCRIBIR i. Porque hay mucha info.
+            superpowerController.showSuperpower();
+            superpowerController.showSuperpower();
+            playerControler.ShowPlayer();
             enemyController.showEnemy();
             mapController.show_MapLevel(1);
-            mapController.playerMove(playerControler, 1, enemyController);
+            mapController.playerMove(playerControler, 1, enemyController, superpowerController);
             mapController.EnemyMove(enemyController, 1);
         }while(uno.equals("1"));
 

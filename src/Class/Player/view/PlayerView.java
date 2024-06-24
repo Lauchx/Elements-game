@@ -26,12 +26,12 @@ public class PlayerView {
         for (Player p: playerRepository.playerList)
         {
 
-        System.out.println("Tu pj se llama: " + p.getName() );
-        System.out.println("maxhp: " + p.getMaxHP());
-        System.out.println("Currenthp: " + p.getCurrentHp());
-        System.out.println("Armour: " + p.getArmour() );
-        System.out.println("maxDamage: " + p.getMaxDamage());
-        System.out.println("CurrentDamage: " + p.getCurrentDamage());
+            System.out.println("Tu pj se llama: " + p.getName() );
+            System.out.println("maxhp: " + p.getMaxHP());
+            System.out.println("Currenthp: " + p.getCurrentHp());
+            System.out.println("Armour: " + p.getArmour() );
+            System.out.println("maxDamage: " + p.getMaxDamage());
+            System.out.println("CurrentDamage: " + p.getCurrentDamage());
         }
     }
 }

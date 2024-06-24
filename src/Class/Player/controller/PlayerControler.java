@@ -17,9 +17,9 @@ public class PlayerControler {
     {
         this.playerRepository.addPlayer(this.playerView.addPlayer());
     }
-    public void ShowPlayer(PlayerRepository playerRepository)
+    public void ShowPlayer()
     {
-        this.playerView.ShowPlayer(playerRepository);
+        this.playerView.ShowPlayer(this.playerRepository);
     }
     public Player returnPlayer()
     {

@@ -3,20 +3,19 @@ package Class.Enemy.Model.Entity;
 import Class.Character.model.entity.Character;
 
 public class Enemy extends Character {
-    public int positionX;
-    public int positionY;
+
     public boolean dead;
 
-    public Enemy(int x, int y, String name)
+    public Enemy(String name)
     {
         super.name = name;
-        super.maxHP = 10;
-        super.currentHp = 10;
-        super.armour = 10;
-        super.maxDamage = 10;
-        super.currentDamage = 10;
-        this.positionX = x;
-        this.positionY = y;
+        super.maxHP = (int) (Math.random()*(130-90+1)+90);
+        super.currentHp = super.maxHP;
+        super.armour = (int) (Math.random()*(10-5+1)+5);
+        super.currentDamage = (int) (Math.random()*(20-10+1)+10);
+        super.maxDamage = super.currentDamage * 2;
+        super.positionX = (int)(Math.random()*8);
+        super.positionY = (int)(Math.random()*6+2);
         this.dead = false;
     }
 

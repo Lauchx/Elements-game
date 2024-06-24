@@ -28,10 +28,9 @@ public class EnemyRepository {
         names[1] = "Leites Dulsus";
         names[2] = "Asasadolokus";
         for (int i = 0; i < 3; i++){
-            int x = (int)(Math.random()*8);
-            int y = (int)(Math.random()*6+2);
 
-            Enemy enemy = new Enemy(x, y, names[i]);
+
+            Enemy enemy = new Enemy(names[i]);
 
             this.enemyList.add(enemy);
         }

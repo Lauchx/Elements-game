@@ -19,9 +19,9 @@ public class Map {
     }
     public  Character searchCharacter()
     {
-        for(int i = 0; i< map.length;i++)
+        for(int i = 0; i< map.length; i++)
         {
-            for(int j = 0; j< map.length;j++)
+            for(int j = 0; j < map.length; j++)
             {
 
                 return map[i][j];

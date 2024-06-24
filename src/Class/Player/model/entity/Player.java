@@ -1,11 +1,12 @@
 package Class.Player.model.entity;
 
 import Class.Character.model.entity.Character;
+import Class.Superpower.Model.Entity.Superpower;
+import Class.Superpower.Model.Repository.SuperpowerRepository;
 
 public class Player extends Character {
-    public int positionX;
-    public int positionY;
     public Integer id;
+    public SuperpowerRepository superpowerRepository;
 
 
     public Player(String name) {
@@ -15,8 +16,9 @@ public class Player extends Character {
     super.setArmour(0);
     super.setMaxDamage(30);
     super.setCurrentDamage(10);
-    this.positionX = 0;
-    this.positionY = 0;
+    this.superpowerRepository = new SuperpowerRepository();
+    super.positionX = 0;
+    super.positionY = 0;
     this.id = 1;
 }
     public int getPositionX() {

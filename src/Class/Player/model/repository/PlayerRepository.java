@@ -1,5 +1,6 @@
 package Class.Player.model.repository;
 
+import Class.Enemy.Controller.EnemyController;
 import Class.Player.model.entity.Player;
 
 import java.util.ArrayList;
@@ -31,5 +32,31 @@ public class PlayerRepository {
         }
         return null;
     }
+    public void fight(EnemyController enemyController){
+        int azar = (int) (Math.random()*6);
+        if(azar == 5)
+        {
+            enemyController.returnEnemy().setCurrentHp(enemyController.returnEnemy().getCurrentDamage() - this.returnPlayer().getMaxDamage());
+        }else
+        {
+            enemyController.returnEnemy().setCurrentHp(enemyController.returnEnemy().getCurrentHp() - this.returnPlayer().getCurrentDamage());
+            //FALTA ARMADURA Y COMPLEJIZAR UN TOQUE MÁS
+            // ARMAS, SUPERPODER BOOOLEANO, ETC... 
+        }
+
+
+
+
+
+        //        if(azar==5)
+//        {
+//            this.returnPlayer().setCurrentHp(returnPlayer().getCurrentHp() - enemyController.returnEnemy().getMaxDamage());
+//            System.out.println("critico");
+//        }else {
+//            this.returnPlayer().setCurrentHp(returnPlayer().getCurrentHp() - enemyController.returnEnemy().getCurrentDamage());
+//            System.out.println("normal");
+//        }
+//        }
 
     }
+}
