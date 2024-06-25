@@ -33,6 +33,14 @@ public class Player extends Character {
         return id;
     }
 
+    public SuperpowerRepository getSuperpowerRepository() {
+        return superpowerRepository;
+    }
+
+    public void setSuperpowerRepository(SuperpowerRepository superpowerRepository) {
+        this.superpowerRepository = superpowerRepository;
+    }
+
     public void setPositionX(int positionX) {
         this.positionX = positionX;
     }

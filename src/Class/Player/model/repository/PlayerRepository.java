@@ -2,6 +2,8 @@ package Class.Player.model.repository;
 
 import Class.Enemy.Controller.EnemyController;
 import Class.Player.model.entity.Player;
+import Class.Superpower.Model.Entity.Superpower;
+import Class.Superpower.Model.Repository.SuperpowerRepository;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -32,6 +34,10 @@ public class PlayerRepository {
         }
         return null;
     }
+    public void createSuperpowers(SuperpowerRepository superpowerRepository)
+    {
+        this.returnPlayer().setSuperpowerRepository(superpowerRepository);
+    }
     public void fight(EnemyController enemyController){
         int azar = (int) (Math.random()*6);
         if(azar == 5)
@@ -57,6 +63,21 @@ public class PlayerRepository {
 //            System.out.println("normal");
 //        }
 //        }
+
+    }
+    public void upgradeSuperpower(Superpower superpower, SuperpowerRepository superpowerRepository)
+    {
+
+
+            if (superpower.getId().equals(0)) {
+                superpower.setLevel(+1);
+            } else if (superpower.getId().equals(1)) {
+                superpower.setLevel(+1);
+            } else if (superpower.getId().equals(2)) {
+                superpower.setLevel(+1);
+            } else if (superpower.getId().equals(3)) {
+                superpower.setLevel(+1);
+            }
 
     }
 }

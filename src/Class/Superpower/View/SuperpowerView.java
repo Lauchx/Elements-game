@@ -14,10 +14,13 @@ public class SuperpowerView {
     }
     public void ShowSuperpower(SuperpowerRepository superpowerRepository)
     {
+        int i =0;
         for(Superpower s: superpowerRepository.superpowerList)
         {
             System.out.println(s);
             System.out.println(s.getId() + " Level:" + s.getLevel() + " Name:" + s.getName());
+            System.out.println(superpowerRepository.superpowerList.get(i).getId() + " Level:" + superpowerRepository.superpowerList.get(i).getLevel() + " Name:" + superpowerRepository.superpowerList.get(i).getName());
+            i++;
         }
     }
 }

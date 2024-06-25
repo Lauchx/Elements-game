@@ -35,55 +35,63 @@ public class MapRepository {
                     map.map[playerControler.returnPlayer().getPositionX()][playerControler.returnPlayer().getPositionY()] = null;
                     map.map[playerControler.returnPlayer().getPositionX()][playerControler.returnPlayer().getPositionY() - 1] = playerControler.returnPlayer();
                     playerControler.returnPlayer().setPositionY(playerControler.returnPlayer().getPositionY() - 1);
+                    map.map[playerControler.returnPlayer().getPositionX()][playerControler.returnPlayer().getPositionY()].setSuperpower(null);
                     this.addMapLevel(map, level);
                 }
-                else
+                else  if(map.map[playerControler.returnPlayer().getPositionX()][playerControler.returnPlayer().getPositionY() - 1].equals(enemyController.returnEnemy()))
                 {
 
-                    // superpowerController.superpowerRepository.SearchSuperpower(map.map[playerControler.returnPlayer().getPositionX()][playerControler.returnPlayer().getPositionY() - 1]);
-                    
-                    if(map.map[playerControler.returnPlayer().getPositionX()][playerControler.returnPlayer().getPositionY() - 1].equals(enemyController.returnEnemy()))
-                    {
-                        playerControler.playerRepository.fight(enemyController);
-                        int x = (int)(Math.random()*7);
-                        int y = (int)(Math.random()*7);
+                    playerControler.playerRepository.fight(enemyController);
+                    if (!this.searchSuperpower_InMap(map, enemyController, playerControler)) {
+
+                        int x = (int) (Math.random() * 7);
+                        int y = (int) (Math.random() * 7);
                         Superpower superpower = new Superpower();
                         superpower = superpowerController.getSuperpowerRepository().ReturnRandomSuperpower();
                         map.map[x][y] = superpower;
                         map.map[x][y].setSuperpower(superpower);
-                        // no se para que puede servir pero........
-                        if(map.map[x][y].getSuperpower() != null)
-                        {
-                        }
-                        if(map.map[playerControler.returnPlayer().getPositionX()][playerControler.returnPlayer().getPositionY() - 1].getSuperpower() != null){
-
-                        }
                     }
-                    else
-                    {
+
+                }else {
+
+
                         map.map[playerControler.returnPlayer().getPositionX()][playerControler.returnPlayer().getPositionY()] = null;
                         map.map[playerControler.returnPlayer().getPositionX()][playerControler.returnPlayer().getPositionY() - 1] = playerControler.returnPlayer();
-//                        playerControler.playerRepository.returnPlayer().setSuperpower(); // necesito un superpoder
-
-                    }
-                        
+                        playerControler.returnPlayer().setPositionY(playerControler.returnPlayer().getPositionY() - 1);
+                    map.map[playerControler.returnPlayer().getPositionX()][playerControler.returnPlayer().getPositionY()].setSuperpower(null);
                 }
+            }else {
+                return false;
             }
-        } else {
-            return false;
-        }else // arreglar esto
-        {
+        }else {
             if(playerControler.returnPlayer().getPositionY() + 1 < 8)
             {
                 if(map.map[playerControler.returnPlayer().getPositionX()][playerControler.returnPlayer().getPositionY() + 1] == null) {
                     map.map[playerControler.returnPlayer().getPositionX()][playerControler.returnPlayer().getPositionY()] = null;
                     map.map[playerControler.returnPlayer().getPositionX()][playerControler.returnPlayer().getPositionY() + 1] = playerControler.returnPlayer();
                     playerControler.returnPlayer().setPositionY(playerControler.returnPlayer().getPositionY() + 1);
+                    map.map[playerControler.returnPlayer().getPositionX()][playerControler.returnPlayer().getPositionY()].setSuperpower(null);
                     this.addMapLevel(map, level);
                 }
-                else {
+                else if(map.map[playerControler.returnPlayer().getPositionX()][playerControler.returnPlayer().getPositionY() + 1].equals(enemyController.returnEnemy()))
+                {
+
                     playerControler.playerRepository.fight(enemyController);
-                    map.map[(int)(Math.random()*7)][(int)(Math.random()*7)] = superpowerController.getSuperpowerRepository().ReturnRandomSuperpower();
+                    if (!this.searchSuperpower_InMap(map, enemyController, playerControler)) {
+
+                        int x = (int) (Math.random() * 7);
+                        int y = (int) (Math.random() * 7);
+                        Superpower superpower = new Superpower();
+                        superpower = superpowerController.getSuperpowerRepository().ReturnRandomSuperpower();
+                        map.map[x][y] = superpower;
+                        map.map[x][y].setSuperpower(superpower);
+                    }
+
+                }else {
+                    map.map[playerControler.returnPlayer().getPositionX()][playerControler.returnPlayer().getPositionY()] = null;
+                    map.map[playerControler.returnPlayer().getPositionX()][playerControler.returnPlayer().getPositionY() + 1] = playerControler.returnPlayer();
+                    playerControler.returnPlayer().setPositionY(playerControler.returnPlayer().getPositionY() + 1);
+                    map.map[playerControler.returnPlayer().getPositionX()][playerControler.returnPlayer().getPositionY()].setSuperpower(null);
                 }
             }
             else{
@@ -102,15 +110,33 @@ public class MapRepository {
             {
                 if(map.map[playerControler.returnPlayer().getPositionX() - 1][playerControler.returnPlayer().getPositionY()] == null) {
                     map.map[playerControler.returnPlayer().getPositionX()][playerControler.returnPlayer().getPositionY()] = null;
+                    map.map[playerControler.returnPlayer().getPositionX() - 1][playerControler.returnPlayer().getPositionY()] = null;
                     map.map[playerControler.returnPlayer().getPositionX() - 1][playerControler.returnPlayer().getPositionY()] = playerControler.returnPlayer();
                     playerControler.returnPlayer().setPositionX(playerControler.returnPlayer().getPositionX() - 1);
+                    //map.map[playerControler.returnPlayer().getPositionX()][playerControler.returnPlayer().getPositionY()].setSuperpower(null);
                     this.addMapLevel(map, level);
                 }
-                else
+                else if(map.map[playerControler.returnPlayer().getPositionX() -1][playerControler.returnPlayer().getPositionY()].equals(enemyController.returnEnemy()))
                 {
+
                     playerControler.playerRepository.fight(enemyController);
-                    map.map[(int)(Math.random()*7)][(int)(Math.random()*7)] = superpowerController.getSuperpowerRepository().ReturnRandomSuperpower();   //.equals((int)(Math.random()*4));
-                    //SuperpowerController.
+                    if (!this.searchSuperpower_InMap(map, enemyController, playerControler)) {
+
+                        int x = (int) (Math.random() * 7);
+                        int y = (int) (Math.random() * 7);
+                        Superpower superpower = new Superpower();
+                        superpower = superpowerController.getSuperpowerRepository().ReturnRandomSuperpower();
+                        map.map[x][y] = superpower;
+                        map.map[x][y].setSuperpower(superpower);
+                    }
+
+                }else {
+                    playerControler.upgradeSuperpower(map.map[playerControler.returnPlayer().getPositionX() -1][playerControler.returnPlayer().getPositionY()].getSuperpower(), superpowerController.superpowerRepository);
+                    map.map[playerControler.returnPlayer().getPositionX()][playerControler.returnPlayer().getPositionY()] = null;
+                    //map.map[playerControler.returnPlayer().getPositionX() - 1][playerControler.returnPlayer().getPositionY()].setSuperpower(null);
+                    map.map[playerControler.returnPlayer().getPositionX() - 1][playerControler.returnPlayer().getPositionY()] = null;
+                    playerControler.returnPlayer().setPositionY(playerControler.returnPlayer().getPositionX() - 1);
+                    map.map[playerControler.returnPlayer().getPositionX()][playerControler.returnPlayer().getPositionY()] = playerControler.returnPlayer();
                 }
             }
             else{
@@ -122,15 +148,36 @@ public class MapRepository {
             if(playerControler.returnPlayer().getPositionX() + 1 < 8)
             {
                 if(map.map[playerControler.returnPlayer().getPositionX() + 1][playerControler.returnPlayer().getPositionY()] == null) {
+                    // Lugar vacio, el juegador se mueve, y se setea el mapa
                     map.map[playerControler.returnPlayer().getPositionX()][playerControler.returnPlayer().getPositionY()] = null;
                     map.map[playerControler.returnPlayer().getPositionX() + 1][playerControler.returnPlayer().getPositionY()] = playerControler.returnPlayer();
                     playerControler.returnPlayer().setPositionX(playerControler.returnPlayer().getPositionX() + 1);
+                    //map.map[playerControler.returnPlayer().getPositionX()][playerControler.returnPlayer().getPositionY()].setSuperpower(null);
                     this.addMapLevel(map, level);
                 }
-                else {
+                else if(map.map[playerControler.returnPlayer().getPositionX() + 1][playerControler.returnPlayer().getPositionY()].equals(enemyController.returnEnemy()))
+                {
+                    //existe un enemigo en el lugar donde se quiere mover, hay pelea.
                     playerControler.playerRepository.fight(enemyController);
-                    map.map[(int)(Math.random()*7)][(int)(Math.random()*7)] = superpowerController.getSuperpowerRepository().ReturnRandomSuperpower();
+                    // crea un superpoder solamente si no existe uno en el mapa.
+                    if (!this.searchSuperpower_InMap(map, enemyController, playerControler)) {
 
+                        int x = (int) (Math.random() * 7);
+                        int y = (int) (Math.random() * 7);
+                        Superpower superpower = new Superpower();
+                        superpower = superpowerController.getSuperpowerRepository().ReturnRandomSuperpower();
+                        map.map[x][y] = superpower;
+                        map.map[x][y].setSuperpower(superpower);
+                    }
+
+
+                }else {
+                    // Aqui entra en caso de que el personaje se mueve a un superpoder, upgradea el superpoder correspondiente
+                    map.map[playerControler.returnPlayer().getPositionX() + 1][playerControler.returnPlayer().getPositionY()] = null;
+                    map.map[playerControler.returnPlayer().getPositionX() + 1][playerControler.returnPlayer().getPositionY()] = playerControler.returnPlayer();
+                    playerControler.returnPlayer().setPositionY(playerControler.returnPlayer().getPositionX() + 1);
+                    map.map[playerControler.returnPlayer().getPositionX()][playerControler.returnPlayer().getPositionY()].setSuperpower(null);
+                    // Metodo en el player, para upgradear el nivel. Tendria que pasarle por parametro el setSuperpower de map.map[][]. antes de que sea null
                 }
             }
             else{
@@ -141,7 +188,23 @@ public class MapRepository {
         return true;
 
     }
-    public boolean enemyPositionMapY(Map map, EnemyController enemyController, int level)
+
+    public boolean searchSuperpower_InMap(Map map, EnemyController enemyController, PlayerControler playerControler){
+
+        for(int i = 0; i < map.map.length; i++)
+        {
+            for(int j = 0; j < map.map.length; j++)
+            {
+                if (map.map[i][j] != null && map.map[i][j] != enemyController.returnEnemy() && map.map[i][j] != playerControler.returnPlayer())
+                {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    public boolean enemyPositionMapY(Map map, EnemyController enemyController, int level) // Revisar si el método tiene que ser void!.
     {
         int azar = (int)(Math.random()*2);
         if(azar >= 1) {

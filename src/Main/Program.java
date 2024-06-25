@@ -38,6 +38,7 @@ public class Program {
         playerControler.addPlayer();
         enemyController.addEnemys();
         superpowerController.addSuperpower();
+        playerControler.createSuperpowers(superpowerController.superpowerRepository);
         playerControler.ShowPlayer();
         mapController.CreateMap(1, playerControler, enemyController);
         String uno = "1";
@@ -54,7 +55,26 @@ public class Program {
         }while(uno.equals("1"));
 
 
+        /* Fuego te aumenta el daño
+        viento aumenta la vida
+        tierra aumenta la armadura
+        agua (aumenta el daño? te protege ? otro disparo a larga distancia? )
 
+        podrria tener ultis de nivel 5 (solamente si apretas una tecla. [NO hacer automatico])
+        fuego --> disparo a larga distancia  ¿ tendria uno o más ? ( quema al enemigo ? )
+        viento --> aumenta la vida al maximo
+        tierra --> inmune a los golpes ¿por cuantos turnos?
+        agua --> no se que puede ser (inmunidad contra la bola de fuego ?, ahogar al enemigo?)
+
+
+
+        IDEA:
+        FUEGO --> larga distancia eje y (columnas) si disparas al enemigo lo quemas, va perdiendo vida por 2 turnos
+        AGUA --> larga distancia eje x (filas) si disparas al enemigo lo ahogas,va perdiendo vida por 2 turnos
+
+
+
+         */
 
 
         // IDEA:
