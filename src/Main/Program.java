@@ -44,8 +44,7 @@ public class Program {
         String uno = "1";
         do
         {
-            //PARA NO SER TAN ROMPE, TENDIRA QUE MOSTRAR SOLAMENTE SI ESCRIBIR i. Porque hay mucha info.
-            superpowerController.showSuperpower();
+            //PARA NO SER TAN ROMPE, TENDIRA QUE MOSTRAR SOLAMENTE SI ESCRIBE i. Porque hay mucha info.
             superpowerController.showSuperpower();
             playerControler.ShowPlayer();
             enemyController.showEnemy();

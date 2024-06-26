@@ -35,7 +35,7 @@ public class MapRepository {
                     map.map[playerControler.returnPlayer().getPositionX()][playerControler.returnPlayer().getPositionY()] = null;
                     map.map[playerControler.returnPlayer().getPositionX()][playerControler.returnPlayer().getPositionY() - 1] = playerControler.returnPlayer();
                     playerControler.returnPlayer().setPositionY(playerControler.returnPlayer().getPositionY() - 1);
-                    map.map[playerControler.returnPlayer().getPositionX()][playerControler.returnPlayer().getPositionY()].setSuperpower(null);
+                    //map.map[playerControler.returnPlayer().getPositionX()][playerControler.returnPlayer().getPositionY()].setSuperpower(null);
                     this.addMapLevel(map, level);
                 }
                 else  if(map.map[playerControler.returnPlayer().getPositionX()][playerControler.returnPlayer().getPositionY() - 1].equals(enemyController.returnEnemy()))
@@ -53,12 +53,11 @@ public class MapRepository {
                     }
 
                 }else {
-
-
+                    playerControler.upgradeSuperpower(map.map[playerControler.returnPlayer().getPositionX()][playerControler.returnPlayer().getPositionY() -1].getSuperpower(), superpowerController.superpowerRepository);
                         map.map[playerControler.returnPlayer().getPositionX()][playerControler.returnPlayer().getPositionY()] = null;
                         map.map[playerControler.returnPlayer().getPositionX()][playerControler.returnPlayer().getPositionY() - 1] = playerControler.returnPlayer();
                         playerControler.returnPlayer().setPositionY(playerControler.returnPlayer().getPositionY() - 1);
-                    map.map[playerControler.returnPlayer().getPositionX()][playerControler.returnPlayer().getPositionY()].setSuperpower(null);
+                    //map.map[playerControler.returnPlayer().getPositionX()][playerControler.returnPlayer().getPositionY()].setSuperpower(null);
                 }
             }else {
                 return false;
@@ -88,6 +87,7 @@ public class MapRepository {
                     }
 
                 }else {
+                    playerControler.upgradeSuperpower(map.map[playerControler.returnPlayer().getPositionX()][playerControler.returnPlayer().getPositionY() + 1].getSuperpower(), superpowerController.superpowerRepository);
                     map.map[playerControler.returnPlayer().getPositionX()][playerControler.returnPlayer().getPositionY()] = null;
                     map.map[playerControler.returnPlayer().getPositionX()][playerControler.returnPlayer().getPositionY() + 1] = playerControler.returnPlayer();
                     playerControler.returnPlayer().setPositionY(playerControler.returnPlayer().getPositionY() + 1);
@@ -110,10 +110,8 @@ public class MapRepository {
             {
                 if(map.map[playerControler.returnPlayer().getPositionX() - 1][playerControler.returnPlayer().getPositionY()] == null) {
                     map.map[playerControler.returnPlayer().getPositionX()][playerControler.returnPlayer().getPositionY()] = null;
-                    map.map[playerControler.returnPlayer().getPositionX() - 1][playerControler.returnPlayer().getPositionY()] = null;
                     map.map[playerControler.returnPlayer().getPositionX() - 1][playerControler.returnPlayer().getPositionY()] = playerControler.returnPlayer();
                     playerControler.returnPlayer().setPositionX(playerControler.returnPlayer().getPositionX() - 1);
-                    //map.map[playerControler.returnPlayer().getPositionX()][playerControler.returnPlayer().getPositionY()].setSuperpower(null);
                     this.addMapLevel(map, level);
                 }
                 else if(map.map[playerControler.returnPlayer().getPositionX() -1][playerControler.returnPlayer().getPositionY()].equals(enemyController.returnEnemy()))
@@ -133,9 +131,7 @@ public class MapRepository {
                 }else {
                     playerControler.upgradeSuperpower(map.map[playerControler.returnPlayer().getPositionX() -1][playerControler.returnPlayer().getPositionY()].getSuperpower(), superpowerController.superpowerRepository);
                     map.map[playerControler.returnPlayer().getPositionX()][playerControler.returnPlayer().getPositionY()] = null;
-                    //map.map[playerControler.returnPlayer().getPositionX() - 1][playerControler.returnPlayer().getPositionY()].setSuperpower(null);
-                    map.map[playerControler.returnPlayer().getPositionX() - 1][playerControler.returnPlayer().getPositionY()] = null;
-                    playerControler.returnPlayer().setPositionY(playerControler.returnPlayer().getPositionX() - 1);
+                    playerControler.returnPlayer().setPositionX(playerControler.returnPlayer().getPositionX() - 1);
                     map.map[playerControler.returnPlayer().getPositionX()][playerControler.returnPlayer().getPositionY()] = playerControler.returnPlayer();
                 }
             }
@@ -150,9 +146,8 @@ public class MapRepository {
                 if(map.map[playerControler.returnPlayer().getPositionX() + 1][playerControler.returnPlayer().getPositionY()] == null) {
                     // Lugar vacio, el juegador se mueve, y se setea el mapa
                     map.map[playerControler.returnPlayer().getPositionX()][playerControler.returnPlayer().getPositionY()] = null;
-                    map.map[playerControler.returnPlayer().getPositionX() + 1][playerControler.returnPlayer().getPositionY()] = playerControler.returnPlayer();
                     playerControler.returnPlayer().setPositionX(playerControler.returnPlayer().getPositionX() + 1);
-                    //map.map[playerControler.returnPlayer().getPositionX()][playerControler.returnPlayer().getPositionY()].setSuperpower(null);
+                    map.map[playerControler.returnPlayer().getPositionX()][playerControler.returnPlayer().getPositionY()] = playerControler.returnPlayer();
                     this.addMapLevel(map, level);
                 }
                 else if(map.map[playerControler.returnPlayer().getPositionX() + 1][playerControler.returnPlayer().getPositionY()].equals(enemyController.returnEnemy()))
@@ -173,10 +168,11 @@ public class MapRepository {
 
                 }else {
                     // Aqui entra en caso de que el personaje se mueve a un superpoder, upgradea el superpoder correspondiente
-                    map.map[playerControler.returnPlayer().getPositionX() + 1][playerControler.returnPlayer().getPositionY()] = null;
-                    map.map[playerControler.returnPlayer().getPositionX() + 1][playerControler.returnPlayer().getPositionY()] = playerControler.returnPlayer();
-                    playerControler.returnPlayer().setPositionY(playerControler.returnPlayer().getPositionX() + 1);
-                    map.map[playerControler.returnPlayer().getPositionX()][playerControler.returnPlayer().getPositionY()].setSuperpower(null);
+                    playerControler.upgradeSuperpower(map.map[playerControler.returnPlayer().getPositionX() + 1][playerControler.returnPlayer().getPositionY()].getSuperpower(), superpowerController.superpowerRepository);
+                    map.map[playerControler.returnPlayer().getPositionX()][playerControler.returnPlayer().getPositionY()] = null;
+                    playerControler.returnPlayer().setPositionX(playerControler.returnPlayer().getPositionX() + 1);
+                    map.map[playerControler.returnPlayer().getPositionX()][playerControler.returnPlayer().getPositionY()] = playerControler.returnPlayer();
+                    this.addMapLevel(map, level);
                     // Metodo en el player, para upgradear el nivel. Tendria que pasarle por parametro el setSuperpower de map.map[][]. antes de que sea null
                 }
             }

@@ -70,13 +70,17 @@ public class PlayerRepository {
 
 
             if (superpower.getId().equals(0)) {
-                superpower.setLevel(+1);
+                superpower.setLevel(superpower.getLevel() +1);
+                System.out.println("up 0");
             } else if (superpower.getId().equals(1)) {
-                superpower.setLevel(+1);
+                superpower.setLevel(superpower.getLevel() +1);
+                System.out.println("up 1");
             } else if (superpower.getId().equals(2)) {
-                superpower.setLevel(+1);
+                superpower.setLevel(superpower.getLevel() +1);
+                System.out.println("up 2");
             } else if (superpower.getId().equals(3)) {
-                superpower.setLevel(+1);
+                superpower.setLevel(superpower.getLevel() +1);
+                System.out.println("up 3");
             }
 
     }
