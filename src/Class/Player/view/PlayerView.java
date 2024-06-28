@@ -34,4 +34,9 @@ public class PlayerView {
             System.out.println("CurrentDamage: " + p.getCurrentDamage());
         }
     }
+    public void upgradeSuperpower(boolean trueOrFalse){
+        if(!trueOrFalse){
+            System.out.println("¡Alcansaste el máximo nivel!");
+        }
+    }
 }

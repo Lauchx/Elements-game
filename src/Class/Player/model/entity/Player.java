@@ -12,10 +12,10 @@ public class Player extends Character {
     public Player(String name) {
     super.setName(name);
     super.setMaxHP(100);
-    super.setCurrentHp(99);
+    super.setCurrentHp(80);
     super.setArmour(0);
-    super.setMaxDamage(30);
-    super.setCurrentDamage(10);
+    super.setMaxDamage(10);
+    super.setCurrentDamage(5);
     this.superpowerRepository = new SuperpowerRepository();
     super.positionX = 0;
     super.positionY = 0;

@@ -47,6 +47,8 @@ public class MapController {
                     enemyController.showEnemy();
                     superpowerController.showSuperpower();
                     break;
+                case "r":
+                    break;
                 default:
                     break;
             }

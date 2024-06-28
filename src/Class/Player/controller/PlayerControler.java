@@ -33,7 +33,7 @@ public class PlayerControler {
     }
     public void upgradeSuperpower(Superpower superpower, SuperpowerRepository superpowerRepository)
     {
-        this.playerRepository.upgradeSuperpower(superpower, superpowerRepository);
+        this.playerView.upgradeSuperpower(this.playerRepository.upgradeSuperpower(superpower, superpowerRepository));
     }
     // metodo para aumentar los atributos o tener la ulti de fuego. para llamarlo desde el main o desde el map
 }

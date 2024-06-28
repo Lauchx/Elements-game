@@ -41,7 +41,7 @@ public class MapRepository {
                 else  if(map.map[playerControler.returnPlayer().getPositionX()][playerControler.returnPlayer().getPositionY() - 1].equals(enemyController.returnEnemy()))
                 {
 
-                    playerControler.playerRepository.fight(enemyController);
+                    playerControler.playerRepository.fight(enemyController, playerControler.playerRepository.UseMaxLevel());
                     if (!this.searchSuperpower_InMap(map, enemyController, playerControler)) {
 
                         int x = (int) (Math.random() * 7);
@@ -75,7 +75,7 @@ public class MapRepository {
                 else if(map.map[playerControler.returnPlayer().getPositionX()][playerControler.returnPlayer().getPositionY() + 1].equals(enemyController.returnEnemy()))
                 {
 
-                    playerControler.playerRepository.fight(enemyController);
+                    playerControler.playerRepository.fight(enemyController, playerControler.playerRepository.UseMaxLevel());
                     if (!this.searchSuperpower_InMap(map, enemyController, playerControler)) {
 
                         int x = (int) (Math.random() * 7);
@@ -117,7 +117,7 @@ public class MapRepository {
                 else if(map.map[playerControler.returnPlayer().getPositionX() -1][playerControler.returnPlayer().getPositionY()].equals(enemyController.returnEnemy()))
                 {
 
-                    playerControler.playerRepository.fight(enemyController);
+                    playerControler.playerRepository.fight(enemyController, playerControler.playerRepository.UseMaxLevel());
                     if (!this.searchSuperpower_InMap(map, enemyController, playerControler)) {
 
                         int x = (int) (Math.random() * 7);
@@ -153,7 +153,7 @@ public class MapRepository {
                 else if(map.map[playerControler.returnPlayer().getPositionX() + 1][playerControler.returnPlayer().getPositionY()].equals(enemyController.returnEnemy()))
                 {
                     //existe un enemigo en el lugar donde se quiere mover, hay pelea.
-                    playerControler.playerRepository.fight(enemyController);
+                    playerControler.playerRepository.fight(enemyController, playerControler.playerRepository.UseMaxLevel());
                     // crea un superpoder solamente si no existe uno en el mapa.
                     if (!this.searchSuperpower_InMap(map, enemyController, playerControler)) {
 
@@ -261,5 +261,6 @@ public class MapRepository {
         }
         return false;
     }
+
 
 }

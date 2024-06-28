@@ -44,7 +44,7 @@ public class Program {
         String uno = "1";
         do
         {
-            //PARA NO SER TAN ROMPE, TENDIRA QUE MOSTRAR SOLAMENTE SI ESCRIBE i. Porque hay mucha info.
+            //PARA NO SER TAN ROMPE, TENDIRA QUE MOSTRAR SOLAMENTE SI ESCRIBE  i. Porque hay mucha info.
             superpowerController.showSuperpower();
             playerControler.ShowPlayer();
             enemyController.showEnemy();
@@ -59,7 +59,7 @@ public class Program {
         tierra aumenta la armadura
         agua (aumenta el daño? te protege ? otro disparo a larga distancia? )
 
-        podrria tener ultis de nivel 5 (solamente si apretas una tecla. [NO hacer automatico])
+        podria tener ultis de nivel 5 (solamente si apretas una tecla. [NO hacer automatico])
         fuego --> disparo a larga distancia  ¿ tendria uno o más ? ( quema al enemigo ? )
         viento --> aumenta la vida al maximo
         tierra --> inmune a los golpes ¿por cuantos turnos?

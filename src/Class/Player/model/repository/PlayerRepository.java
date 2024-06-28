@@ -1,7 +1,9 @@
 package Class.Player.model.repository;
 
 import Class.Enemy.Controller.EnemyController;
+import Class.Player.controller.PlayerControler;
 import Class.Player.model.entity.Player;
+import Class.Superpower.Controller.SuperpowerController;
 import Class.Superpower.Model.Entity.Superpower;
 import Class.Superpower.Model.Repository.SuperpowerRepository;
 
@@ -38,50 +40,119 @@ public class PlayerRepository {
     {
         this.returnPlayer().setSuperpowerRepository(superpowerRepository);
     }
-    public void fight(EnemyController enemyController){
-        int azar = (int) (Math.random()*6);
-        if(azar == 5)
+    public void fight(EnemyController enemyController, boolean levelMax){
+
+
+        if(levelMax)
         {
-            enemyController.returnEnemy().setCurrentHp(enemyController.returnEnemy().getCurrentDamage() - this.returnPlayer().getMaxDamage());
+            enemyController.returnEnemy().setCurrentHp((enemyController.returnEnemy().getCurrentHp() - this.returnPlayer().getMaxDamage()) + enemyController.returnEnemy().getArmour());
         }else
         {
-            enemyController.returnEnemy().setCurrentHp(enemyController.returnEnemy().getCurrentHp() - this.returnPlayer().getCurrentDamage());
-            //FALTA ARMADURA Y COMPLEJIZAR UN TOQUE MÁS
-            // ARMAS, SUPERPODER BOOOLEANO, ETC... 
+            enemyController.returnEnemy().setCurrentHp((enemyController.returnEnemy().getCurrentHp() - this.returnPlayer().getCurrentDamage()) + enemyController.returnEnemy().getArmour());
         }
-
-
-
-
-
-        //        if(azar==5)
-//        {
-//            this.returnPlayer().setCurrentHp(returnPlayer().getCurrentHp() - enemyController.returnEnemy().getMaxDamage());
-//            System.out.println("critico");
-//        }else {
-//            this.returnPlayer().setCurrentHp(returnPlayer().getCurrentHp() - enemyController.returnEnemy().getCurrentDamage());
-//            System.out.println("normal");
-//        }
-//        }
-
     }
-    public void upgradeSuperpower(Superpower superpower, SuperpowerRepository superpowerRepository)
+
+            //FALTA ARMADURA Y COMPLEJIZAR UN TOQUE MÁS
+            // ARMAS, SUPERPODER BOOOLEANO, ETC...
+
+            /* Fuego te aumenta el daño
+                viento aumenta la vida
+                tierra aumenta la armadura
+                agua (aumenta el daño? te protege ? otro disparo a larga distancia? )
+
+                podrria tener ultis de nivel 5 (solamente si apretas una tecla. [NO hacer automatico])
+                fuego --> disparo a larga distancia  ¿ tendria uno o más ? ( quema al enemigo ? )
+                viento --> aumenta la vida al maximo
+                tierra --> inmune a los golpes ¿por cuantos turnos?
+                agua --> no se que puede ser (inmunidad contra la bola de fuego ?, ahogar al enemigo?)
+
+
+
+                IDEA:
+                FUEGO --> larga distancia eje y (columnas) si disparas al enemigo lo quemas, va perdiendo vida por 2 turnos
+                AGUA --> larga distancia eje x (filas) si disparas al enemigo lo ahogas,va perdiendo vida por 2 turnos
+
+
+
+         */
+
+
+    public boolean upgradeSuperpower(Superpower superpower, SuperpowerRepository superpowerRepository)
     {
 
-
             if (superpower.getId().equals(0)) {
-                superpower.setLevel(superpower.getLevel() +1);
-                System.out.println("up 0");
+                if(superpower.getLevel() != 5){
+                    superpower.setLevel(superpower.getLevel() + 5);
+                    if(this.returnPlayer().getCurrentDamage() + 5 < this.returnPlayer().getMaxDamage()) {
+                        this.returnPlayer().setCurrentDamage(this.returnPlayer().getCurrentDamage() + 5);
+                        return true;
+                    }
+                }else {
+                    return false;
+                }
             } else if (superpower.getId().equals(1)) {
-                superpower.setLevel(superpower.getLevel() +1);
-                System.out.println("up 1");
+                if(superpower.getLevel() != 5) {
+                    superpower.setLevel(superpower.getLevel() + 1);
+                    if(this.returnPlayer().getCurrentDamage() + 5 < this.returnPlayer().getMaxDamage()) {
+                        this.returnPlayer().setCurrentDamage(this.returnPlayer().getCurrentDamage() + 5);
+                        return true;
+                    }
+                }else {
+                    return false;
+                }
             } else if (superpower.getId().equals(2)) {
-                superpower.setLevel(superpower.getLevel() +1);
-                System.out.println("up 2");
+                if(superpower.getLevel() != 5) {
+                    superpower.setLevel(superpower.getLevel() + 1);
+                    if(this.returnPlayer().getCurrentHp() + 10 < this.returnPlayer().getMaxHP()) {
+                        this.returnPlayer().setCurrentHp(this.returnPlayer().getCurrentHp() + 10);
+                        return true;
+                    }
+                }else {
+                    return false;
+                }
             } else if (superpower.getId().equals(3)) {
-                superpower.setLevel(superpower.getLevel() +1);
-                System.out.println("up 3");
+                if(superpower.getLevel() != 5) {
+                    superpower.setLevel(superpower.getLevel() + 1);
+                    this.returnPlayer().setArmour(this.returnPlayer().getArmour() + 2);
+                    return true;
+                }else {
+                    return false;
+                }
             }
+            return false;
+    }
+    public boolean UseMaxLevel(){
+       // if(this.returnPlayer().superpowerRepository.);
+        for(Superpower s: this.returnPlayer().superpowerRepository.superpowerList){
 
+            if (s.getLevel() == 5) {
+                if (s.getId().equals(0)){
+                    s.setLevel(0);
+                    s.setMaxDamage(s.getMaxDamage() + 5);
+                    System.out.println("entro a fuego");
+                    // idk
+                  //this.returnPlayer().superpowerRepository.superpowerList.get(0).setMaxDamage(this.returnPlayer().superpowerRepository.superpowerList.get(0).getMaxDamage() + 5);
+                    return true;
+                }
+                if (s.getId().equals(1)){
+                    s.setLevel(0);
+                    s.setMaxDamage(s.getMaxDamage() + 5);
+                   // s.setCurrentDamage(s.getMaxDamage());
+                    return true;
+                }
+                if (s.getId().equals(2)){
+                    s.setLevel(0);
+                    s.setMaxHP(s.getMaxHP() + 5);
+                    //s.setCurrentHp(s.getMaxHP());
+                    return true;
+                }
+                if (s.getId().equals(3)){
+                    s.setLevel(0);
+                    // tendria que ser automatico cuando quieren pegarle
+                }
+
+            }
+        }
+        return false;
     }
 }
