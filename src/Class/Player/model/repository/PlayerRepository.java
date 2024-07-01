@@ -1,16 +1,18 @@
 package Class.Player.model.repository;
 
+import Class.Character.model.entity.Character;
 import Class.Enemy.Controller.EnemyController;
+import Class.Enemy.Model.Entity.Enemy;
 import Class.Player.controller.PlayerControler;
 import Class.Player.model.entity.Player;
-import Class.Superpower.Controller.SuperpowerController;
 import Class.Superpower.Model.Entity.Superpower;
 import Class.Superpower.Model.Repository.SuperpowerRepository;
+import Intefaces.Combat;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class PlayerRepository {
+public class PlayerRepository implements Combat {
     public List<Player> playerList; // Si yo no necesitara muchos, para que me sirve un repositorio, yo solo quiero uno
 
 
@@ -40,17 +42,26 @@ public class PlayerRepository {
     {
         this.returnPlayer().setSuperpowerRepository(superpowerRepository);
     }
-    public void fight(EnemyController enemyController, boolean levelMax){
-
+    @Override
+    public void fight(EnemyController enemyController, PlayerControler playerControler, boolean levelMax){
 
         if(levelMax)
         {
+            if ((enemyController.returnEnemy().getCurrentHp() - this.returnPlayer().getMaxDamage()) + enemyController.returnEnemy().getArmour() > 0 ) {
             enemyController.returnEnemy().setCurrentHp((enemyController.returnEnemy().getCurrentHp() - this.returnPlayer().getMaxDamage()) + enemyController.returnEnemy().getArmour());
+            }else {
+                enemyController.returnEnemy().setDead(true);
+            }
         }else
         {
-            enemyController.returnEnemy().setCurrentHp((enemyController.returnEnemy().getCurrentHp() - this.returnPlayer().getCurrentDamage()) + enemyController.returnEnemy().getArmour());
+            if((enemyController.returnEnemy().getCurrentHp() - this.returnPlayer().getCurrentDamage()) + enemyController.returnEnemy().getArmour() > 0) {
+                enemyController.returnEnemy().setCurrentHp((enemyController.returnEnemy().getCurrentHp() - this.returnPlayer().getCurrentDamage()) + enemyController.returnEnemy().getArmour());
+            }else {
+                enemyController.returnEnemy().setDead(true);
+            }
         }
     }
+
 
             //FALTA ARMADURA Y COMPLEJIZAR UN TOQUE MÁS
             // ARMAS, SUPERPODER BOOOLEANO, ETC...
@@ -79,46 +90,47 @@ public class PlayerRepository {
 
     public boolean upgradeSuperpower(Superpower superpower, SuperpowerRepository superpowerRepository)
     {
-
+        if(superpower != null) {
             if (superpower.getId().equals(0)) {
-                if(superpower.getLevel() != 5){
+                if (superpower.getLevel() != 5) {
                     superpower.setLevel(superpower.getLevel() + 5);
-                    if(this.returnPlayer().getCurrentDamage() + 5 < this.returnPlayer().getMaxDamage()) {
+                    if (this.returnPlayer().getCurrentDamage() + 5 < this.returnPlayer().getMaxDamage()) {
                         this.returnPlayer().setCurrentDamage(this.returnPlayer().getCurrentDamage() + 5);
                         return true;
                     }
-                }else {
+                } else {
                     return false;
                 }
             } else if (superpower.getId().equals(1)) {
-                if(superpower.getLevel() != 5) {
+                if (superpower.getLevel() != 5) {
                     superpower.setLevel(superpower.getLevel() + 1);
-                    if(this.returnPlayer().getCurrentDamage() + 5 < this.returnPlayer().getMaxDamage()) {
+                    if (this.returnPlayer().getCurrentDamage() + 5 < this.returnPlayer().getMaxDamage()) {
                         this.returnPlayer().setCurrentDamage(this.returnPlayer().getCurrentDamage() + 5);
                         return true;
                     }
-                }else {
+                } else {
                     return false;
                 }
             } else if (superpower.getId().equals(2)) {
-                if(superpower.getLevel() != 5) {
+                if (superpower.getLevel() != 5) {
                     superpower.setLevel(superpower.getLevel() + 1);
-                    if(this.returnPlayer().getCurrentHp() + 10 < this.returnPlayer().getMaxHP()) {
+                    if (this.returnPlayer().getCurrentHp() + 10 < this.returnPlayer().getMaxHP()) {
                         this.returnPlayer().setCurrentHp(this.returnPlayer().getCurrentHp() + 10);
                         return true;
                     }
-                }else {
+                } else {
                     return false;
                 }
             } else if (superpower.getId().equals(3)) {
-                if(superpower.getLevel() != 5) {
+                if (superpower.getLevel() != 5) {
                     superpower.setLevel(superpower.getLevel() + 1);
                     this.returnPlayer().setArmour(this.returnPlayer().getArmour() + 2);
                     return true;
-                }else {
+                } else {
                     return false;
                 }
             }
+        }
             return false;
     }
     public boolean UseMaxLevel(){
@@ -130,29 +142,28 @@ public class PlayerRepository {
                     s.setLevel(0);
                     s.setMaxDamage(s.getMaxDamage() + 5);
                     System.out.println("entro a fuego");
-                    // idk
-                  //this.returnPlayer().superpowerRepository.superpowerList.get(0).setMaxDamage(this.returnPlayer().superpowerRepository.superpowerList.get(0).getMaxDamage() + 5);
                     return true;
                 }
                 if (s.getId().equals(1)){
                     s.setLevel(0);
                     s.setMaxDamage(s.getMaxDamage() + 5);
-                   // s.setCurrentDamage(s.getMaxDamage());
                     return true;
                 }
                 if (s.getId().equals(2)){
                     s.setLevel(0);
                     s.setMaxHP(s.getMaxHP() + 5);
-                    //s.setCurrentHp(s.getMaxHP());
                     return true;
                 }
                 if (s.getId().equals(3)){
                     s.setLevel(0);
                     // tendria que ser automatico cuando quieren pegarle
+                    return true;
                 }
 
             }
         }
         return false;
     }
+
+
 }

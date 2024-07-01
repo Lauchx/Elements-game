@@ -1,6 +1,7 @@
 package Class.Map.Controller;
 
 import Class.Enemy.Controller.EnemyController;
+import Class.Enemy.Model.Entity.Enemy;
 import Class.Map.Model.Repository.MapRepository;
 import Class.Map.Vista.MapView;
 import Class.Player.controller.PlayerControler;
@@ -56,8 +57,11 @@ public class MapController {
     }
     public void EnemyMove(EnemyController enemyController, int level)
     {
+        Enemy enemy = new Enemy();
+        if(enemyController.returnEnemy() != enemy){
         this.mapRepository.enemyPositionMapX(this.mapRepository.mapArray[level], enemyController, level);
         this.mapRepository.enemyPositionMapY(this.mapRepository.mapArray[level], enemyController, level);
+        }
     }
     public void noMoveMore(boolean yesornot)
     {

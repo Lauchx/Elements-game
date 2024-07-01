@@ -2,6 +2,7 @@ package Class.Map.Vista;
 
 
 
+import Class.Enemy.Model.Entity.Enemy;
 import Class.Map.Model.Repository.MapRepository;
 import Class.Character.model.entity.Character;
 import java.util.Scanner;
@@ -21,13 +22,17 @@ public class MapView {
             for(int j = 0; j < mapRepository.mapArray[level].map.length;j++)
             {
                 Character character = new Character();
+                Enemy enemy = new Enemy();
                 character = mapRepository.mapArray[level].map[i][j];
-                if(character == null)
-                {
-                    System.out.print("|   |");
-                }else
-                {
-                    System.out.print(character.toString());
+                if( character != enemy) {
+                    if (character == null) {
+                        System.out.print("|   |");
+                    } else {
+                        System.out.print(character.toString());
+                    }
+                }else {
+                    System.out.println("YOU WIN");
+                    break;
                 }
             }
             System.out.println("");

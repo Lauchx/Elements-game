@@ -15,7 +15,7 @@ public class Player extends Character {
     super.setCurrentHp(80);
     super.setArmour(0);
     super.setMaxDamage(10);
-    super.setCurrentDamage(5);
+    super.setCurrentDamage(88);
     this.superpowerRepository = new SuperpowerRepository();
     super.positionX = 0;
     super.positionY = 0;
