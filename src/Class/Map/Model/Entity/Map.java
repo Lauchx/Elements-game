@@ -5,9 +5,15 @@ import Class.Character.model.entity.Character;
 public class Map {
     public Character[][] map;
 
-    public Map()
+    public Map(int level)
     {
-        this.map = new Character[8][8];
+        if(level == 1) {
+            this.map = new Character[8][8];
+        }else if(level == 2) {
+            this.map = new Character[6][6];
+        }else {
+            this.map = new Character[4][4];
+        }
     }
 
     public Character[][] getMap() {

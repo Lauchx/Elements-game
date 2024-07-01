@@ -21,9 +21,9 @@ public class MapController {
         this.mapRepository.CreateMap(level, playerControler, enemyController);
     }
 
-    public void show_MapLevel(int level)
+    public boolean show_MapLevel(int level, EnemyController enemyController, PlayerControler playerControler)
     {
-        this.mapView.ShowMap(this.mapRepository, level);
+        return this.mapView.ShowMap(this.mapRepository, level, enemyController, playerControler);
     }
     public void playerMove(PlayerControler playerControler, int level, EnemyController enemyController, SuperpowerController superpowerController)
     {
@@ -32,16 +32,16 @@ public class MapController {
             move = this.mapView.playerMove();
             switch (move) {
                 case "w":
-                    noMoveMore(this.mapRepository.playerPositionMapX(this.mapRepository.mapArray[1], playerControler, level, move, enemyController, superpowerController));
+                    noMoveMore(this.mapRepository.playerPositionMapX(this.mapRepository.mapArray[level], playerControler, level, move, enemyController, superpowerController));
                     break;
                 case "a":
-                    noMoveMore(this.mapRepository.playerPositionMapY(this.mapRepository.mapArray[1], playerControler, enemyController, level, move, superpowerController));
+                    noMoveMore(this.mapRepository.playerPositionMapY(this.mapRepository.mapArray[level], playerControler, enemyController, level, move, superpowerController));
                     break;
                 case "s":
-                    noMoveMore(this.mapRepository.playerPositionMapX(this.mapRepository.mapArray[1], playerControler, level, move, enemyController, superpowerController));
+                    noMoveMore(this.mapRepository.playerPositionMapX(this.mapRepository.mapArray[level], playerControler, level, move, enemyController, superpowerController));
                     break;
                 case "d":
-                    noMoveMore(this.mapRepository.playerPositionMapY(this.mapRepository.mapArray[1], playerControler, enemyController, level, move, superpowerController));
+                    noMoveMore(this.mapRepository.playerPositionMapY(this.mapRepository.mapArray[level], playerControler, enemyController, level, move, superpowerController));
                     break;
                 case "i":
                     playerControler.ShowPlayer();

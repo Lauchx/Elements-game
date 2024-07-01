@@ -15,13 +15,15 @@ import Class.Superpower.Controller.SuperpowerController;
 import Class.Superpower.Model.Repository.SuperpowerRepository;
 import Class.Superpower.View.SuperpowerView;
 
+import java.util.Scanner;
+
 public class Program {
 
     public static void main(String[] args) {
         PlayerRepository playerRepository = new PlayerRepository();
         PlayerView playerView = new PlayerView();
         PlayerControler playerControler = new PlayerControler(playerRepository, playerView);
-        MapRepository mapRepository = new MapRepository(3);
+        MapRepository mapRepository = new MapRepository(4);
         MapView mapView = new MapView();
         MapController mapController = new MapController(mapRepository, mapView);
         EnemyView enemyView = new EnemyView();
@@ -36,22 +38,91 @@ public class Program {
     static void MenuGame(PlayerControler playerControler, MapController mapController,EnemyController enemyController, SuperpowerController  superpowerController)
     {
         playerControler.addPlayer();
-        enemyController.addEnemys();
         superpowerController.addSuperpower();
         playerControler.createSuperpowers(superpowerController.superpowerRepository);
         playerControler.ShowPlayer();
-        mapController.CreateMap(1, playerControler, enemyController);
-        String uno = "1";
-        do
-        {
-            //PARA NO SER TAN ROMPE, TENDIRA QUE MOSTRAR SOLAMENTE SI ESCRIBE  i. Porque hay mucha info.
-            superpowerController.showSuperpower();
-            playerControler.ShowPlayer();
-            enemyController.showEnemy();
-            mapController.show_MapLevel(1);
-            mapController.playerMove(playerControler, 1, enemyController, superpowerController);
-            mapController.EnemyMove(enemyController, 1);
-        }while(uno.equals("1"));
+        //String uno = "1";
+        Scanner scanner = new Scanner(System.in);
+        int level = scanner.nextInt();
+        scanner = new Scanner(System.in);
+        boolean finished;
+        enemyController.addEnemys(level);
+        // en lugar de uin switch ya es el mismo codigo, tendria un if(level == 1 || level == 2 || level == 3 ) {un unico codigo} else { sout("no existe ese nivel");
+        if(level == 1 || level == 2 || level == 3 ){
+            mapController.CreateMap(level, playerControler, enemyController);
+            do {
+                superpowerController.showSuperpower();
+                playerControler.ShowPlayer();
+                enemyController.showEnemy();
+                finished = mapController.show_MapLevel(level, enemyController, playerControler);
+                if (finished) {
+                    mapController.playerMove(playerControler, level, enemyController, superpowerController);
+                    mapController.EnemyMove(enemyController, level);
+                }
+            }while(finished);
+
+        }else{
+            System.out.println("NO existen mas niveles perrito malvado");
+        }
+//        switch (level)
+//        {
+//            case 1:
+//                // level 1
+//                mapController.CreateMap(level, playerControler, enemyController);
+//                do {
+//                    superpowerController.showSuperpower();
+//                    playerControler.ShowPlayer();
+//                    enemyController.showEnemy();
+//                    finished = mapController.show_MapLevel(level, enemyController, playerControler);
+//                    if (finished) {
+//                        mapController.playerMove(playerControler, level, enemyController, superpowerController);
+//                        mapController.EnemyMove(enemyController, level);
+//                    }
+//                }while(finished);
+//                break;
+//            case 2:
+//                // level 2
+//                mapController.CreateMap(level, playerControler, enemyController);
+//                do {
+//                    superpowerController.showSuperpower();
+//                    playerControler.ShowPlayer();
+//                    enemyController.showEnemy();
+//                    finished = mapController.show_MapLevel(level, enemyController, playerControler);
+//                    if (finished) {
+//                        mapController.playerMove(playerControler, level, enemyController, superpowerController);
+//                        mapController.EnemyMove(enemyController, level);
+//                    }
+//                }while(finished);
+//                break;
+//            case 3:
+//                // level 3
+//                mapController.CreateMap(level, playerControler, enemyController);
+//                do {
+//                    superpowerController.showSuperpower();
+//                    playerControler.ShowPlayer();
+//                    enemyController.showEnemy();
+//                    finished = mapController.show_MapLevel(level, enemyController, playerControler);
+//                    if (finished) {
+//                        mapController.playerMove(playerControler, level, enemyController, superpowerController);
+//                        mapController.EnemyMove(enemyController, level);
+//                    }
+//                }while (finished);
+//                break;
+//            default:
+//                System.out.println("NO existen mas niveles perrito malvado");
+//        }
+//        do
+//        {
+//            //PARA NO SER TAN ROMPE, TENDIRA QUE MOSTRAR SOLAMENTE SI ESCRIBE  i. Porque hay mucha info.
+//            superpowerController.showSuperpower();
+//            playerControler.ShowPlayer();
+//            enemyController.showEnemy();
+//           if(mapController.show_MapLevel(1, enemyController, playerControler))
+//            {
+//                mapController.playerMove(playerControler, 1, enemyController, superpowerController);
+//                mapController.EnemyMove(enemyController, 1);
+//            }
+//        }while(uno.equals("1"));
 
 
         /* Fuego te aumenta el daño

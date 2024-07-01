@@ -28,18 +28,23 @@ public class EnemyRepository implements Combat {
         this.enemyList = enemyList;
     }
 
-    public void addEnemys()
+    public void addEnemys(int level)
     {
         String[] names = new String[3];
         names[0] = "Mateicopulus";
         names[1] = "Leites Dulsus";
         names[2] = "Asasadolokus";
         for (int i = 0; i < 3; i++){
-
-
-            Enemy enemy = new Enemy(names[i]);
-
-            this.enemyList.add(enemy);
+            if(level == 1){
+                Enemy enemy = new Enemy(names[i], 8, 6);
+                this.enemyList.add(enemy);
+            }else if(level == 2){
+                Enemy enemy = new Enemy(names[i], 6, 4);
+                this.enemyList.add(enemy);
+            }else{
+                Enemy enemy = new Enemy(names[i], 4, 2);
+                this.enemyList.add(enemy);
+            }
         }
 
     }

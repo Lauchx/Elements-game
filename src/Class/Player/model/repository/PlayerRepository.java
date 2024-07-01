@@ -32,7 +32,7 @@ public class PlayerRepository implements Combat {
     {
         for(Player p: playerList)
         {
-            if(p.getId().equals(1)){
+            if(p.getId().equals(1)   ){
                 return p;
             }
         }
@@ -45,17 +45,21 @@ public class PlayerRepository implements Combat {
     @Override
     public void fight(EnemyController enemyController, PlayerControler playerControler, boolean levelMax){
 
+        // no estaría mal que te hagas la mitad o 1/4 de daño si le pegas, para que sea un poco más difícil
         if(levelMax)
         {
             if ((enemyController.returnEnemy().getCurrentHp() - this.returnPlayer().getMaxDamage()) + enemyController.returnEnemy().getArmour() > 0 ) {
             enemyController.returnEnemy().setCurrentHp((enemyController.returnEnemy().getCurrentHp() - this.returnPlayer().getMaxDamage()) + enemyController.returnEnemy().getArmour());
+            playerControler.returnPlayer().setCurrentHp((playerControler.returnPlayer().getCurrentHp() - (enemyController.returnEnemy().getCurrentDamage() / 4) + playerControler.returnPlayer().getArmour()) );
             }else {
+                enemyController.returnEnemy().setCurrentHp(0);
                 enemyController.returnEnemy().setDead(true);
             }
         }else
         {
             if((enemyController.returnEnemy().getCurrentHp() - this.returnPlayer().getCurrentDamage()) + enemyController.returnEnemy().getArmour() > 0) {
                 enemyController.returnEnemy().setCurrentHp((enemyController.returnEnemy().getCurrentHp() - this.returnPlayer().getCurrentDamage()) + enemyController.returnEnemy().getArmour());
+                playerControler.returnPlayer().setCurrentHp((playerControler.returnPlayer().getCurrentHp() - (enemyController.returnEnemy().getCurrentDamage() / 4) + playerControler.returnPlayer().getArmour()) );
             }else {
                 enemyController.returnEnemy().setDead(true);
             }
@@ -93,7 +97,7 @@ public class PlayerRepository implements Combat {
         if(superpower != null) {
             if (superpower.getId().equals(0)) {
                 if (superpower.getLevel() != 5) {
-                    superpower.setLevel(superpower.getLevel() + 5);
+                    superpower.setLevel(superpower.getLevel() + 1);
                     if (this.returnPlayer().getCurrentDamage() + 5 < this.returnPlayer().getMaxDamage()) {
                         this.returnPlayer().setCurrentDamage(this.returnPlayer().getCurrentDamage() + 5);
                         return true;

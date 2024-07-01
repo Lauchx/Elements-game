@@ -16,9 +16,9 @@ public class EnemyController {
     public void showEnemy(){
         this.enemyView.showEnemy(this.enemyRepository);
     }
-    public void addEnemys()
+    public void addEnemys(int level)
     {
-        this.enemyRepository.addEnemys();
+        this.enemyRepository.addEnemys(level);
     }
     public Enemy returnEnemy()
     {
