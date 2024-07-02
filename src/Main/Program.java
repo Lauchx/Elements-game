@@ -49,20 +49,20 @@ public class Program {
         enemyController.addEnemys(level);
         // en lugar de uin switch ya es el mismo codigo, tendria un if(level == 1 || level == 2 || level == 3 ) {un unico codigo} else { sout("no existe ese nivel");
         if (level == 1 || level == 2 || level == 3) {
+            System.out.println("'i' para más infomación");
             mapController.CreateMap(level, playerControler, enemyController);
             do {
                 finished = mapController.show_MapLevel(level, enemyController, playerControler);
                 if (finished) {
                     mapController.playerMove(playerControler, level, enemyController, superpowerController);
                     mapController.EnemyMove(enemyController, level);
-                    // i para más info.
                 }
             } while (finished);
 
         } else if (level == 0) {
             System.out.println("-El enemigo se moverá según el nivel de dificultad, puede ser 1 o varias casillas a la vez\n-El jugador solo se podrá mover una casilla\n-Los superpoderes aparecerá cuando aciertes en el casillero enemigo, si es que no existe un superpoder en el mapa\n -seguir");
         } else {
-            System.out.println("NO existen mas niveles perrito malvado");
+            System.out.println("No existen mas niveles");
         }
     }
 }
@@ -149,7 +149,7 @@ public class Program {
          */
 
 
-        // IDEA:
+// IDEA:
 //        switch (number)
 //        {
 //            case 1:

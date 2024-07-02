@@ -134,7 +134,7 @@ public class PlayerRepository implements Combat {
                 }
             }
         }
-            return false;
+            return true;
     }
     public boolean UseMaxLevel(){
        // if(this.returnPlayer().superpowerRepository.);
