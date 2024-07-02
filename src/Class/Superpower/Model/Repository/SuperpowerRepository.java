@@ -33,9 +33,7 @@ public class SuperpowerRepository {
     public boolean SearchSuperpower(Character character) {
         for (int i = 0; i < this.superpowerList.size(); i++) {
             if (character.equals(this.superpowerList)) {
-//             System.out.println("entre");
             }
-//         System.out.println("no entre");
         }
 //     for(Superpower s: this.superpowerList)
 //     {

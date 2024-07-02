@@ -40,9 +40,12 @@ public class MapRepository {
 
                     playerControler.playerRepository.fight(enemyController, playerControler, playerControler.playerRepository.UseMaxLevel());
                     if (!this.searchSuperpower_InMap(map, superpowerController)) {
-
-                        int x = (int) (Math.random() *  map.map.length);
-                        int y = (int) (Math.random() *  map.map.length);
+                        int x;
+                        int y;
+                        do {
+                            x = (int) (Math.random() * map.map.length);
+                            y = (int) (Math.random() * map.map.length);
+                        }while (x == playerControler.returnPlayer().getPositionX() && y == playerControler.returnPlayer().getPositionY());
                         Superpower superpower = new Superpower();
                         superpower = superpowerController.getSuperpowerRepository().ReturnRandomSuperpower();
                         map.map[x][y] = superpower;
@@ -71,9 +74,12 @@ public class MapRepository {
 
                     playerControler.playerRepository.fight(enemyController, playerControler, playerControler.playerRepository.UseMaxLevel());
                     if (!this.searchSuperpower_InMap(map, superpowerController)) {
-
-                        int x = (int) (Math.random() * map.map.length);
-                        int y = (int) (Math.random() *  map.map.length);
+                        int x;
+                        int y;
+                        do {
+                            x = (int) (Math.random() * map.map.length);
+                            y = (int) (Math.random() * map.map.length);
+                        }while ( (x == playerControler.returnPlayer().getPositionX() && y == playerControler.returnPlayer().getPositionY() ) || ( x == enemyController.returnEnemy().getPositionX() && y == enemyController.returnEnemy().getPositionY() ));
                         Superpower superpower = new Superpower();
                         superpower = superpowerController.getSuperpowerRepository().ReturnRandomSuperpower();
                         map.map[x][y] = superpower;
@@ -108,8 +114,12 @@ public class MapRepository {
                     playerControler.playerRepository.fight(enemyController, playerControler, playerControler.playerRepository.UseMaxLevel());
                     if (!this.searchSuperpower_InMap(map, superpowerController)) {
 
-                        int x = (int) (Math.random() *  map.map.length);
-                        int y = (int) (Math.random() *  map.map.length);
+                        int x;
+                        int y;
+                        do {
+                            x = (int) (Math.random() * map.map.length);
+                            y = (int) (Math.random() * map.map.length);
+                        }while (x == playerControler.returnPlayer().getPositionX() && y == playerControler.returnPlayer().getPositionY());
                         Superpower superpower = new Superpower();
                         superpower = superpowerController.getSuperpowerRepository().ReturnRandomSuperpower();
                         map.map[x][y] = superpower;
@@ -139,9 +149,12 @@ public class MapRepository {
                     //enemyController.enemyRepository.fight(enemyController,playerControler, );
                     // crea un superpoder solamente si no existe uno en el mapa.
                     if (!this.searchSuperpower_InMap(map, superpowerController)) {
-                        System.out.println(map.map.length);
-                        int x = (int) (Math.random() * map.map.length);
-                        int y = (int) (Math.random() * map.map.length);
+                        int x;
+                        int y;
+                        do {
+                            x = (int) (Math.random() * map.map.length);
+                            y = (int) (Math.random() * map.map.length);
+                        }while (x == playerControler.returnPlayer().getPositionX() && y == playerControler.returnPlayer().getPositionY());
                         Superpower superpower = new Superpower();
                         superpower = superpowerController.getSuperpowerRepository().ReturnRandomSuperpower();
                         map.map[x][y] = superpower;

@@ -98,30 +98,29 @@ public class PlayerRepository implements Combat {
             if (superpower.getId().equals(0)) {
                 if (superpower.getLevel() != 5) {
                     superpower.setLevel(superpower.getLevel() + 1);
-                    if (this.returnPlayer().getCurrentDamage() + 5 < this.returnPlayer().getMaxDamage()) {
+                    if (this.returnPlayer().getCurrentDamage() + 5 <= this.returnPlayer().getMaxDamage()) {
                         this.returnPlayer().setCurrentDamage(this.returnPlayer().getCurrentDamage() + 5);
-                        return true;
                     }
+                    return true;
                 } else {
                     return false;
                 }
             } else if (superpower.getId().equals(1)) {
                 if (superpower.getLevel() != 5) {
                     superpower.setLevel(superpower.getLevel() + 1);
-                    if (this.returnPlayer().getCurrentDamage() + 5 < this.returnPlayer().getMaxDamage()) {
+                    if(this.returnPlayer().getCurrentDamage() + 5 <= this.returnPlayer().getMaxDamage()) {
                         this.returnPlayer().setCurrentDamage(this.returnPlayer().getCurrentDamage() + 5);
-                        return true;
                     }
+                    return true;
                 } else {
                     return false;
                 }
             } else if (superpower.getId().equals(2)) {
                 if (superpower.getLevel() != 5) {
                     superpower.setLevel(superpower.getLevel() + 1);
-                    if (this.returnPlayer().getCurrentHp() + 10 < this.returnPlayer().getMaxHP()) {
+                    if (this.returnPlayer().getCurrentHp() + 10 <= this.returnPlayer().getMaxHP()) {
                         this.returnPlayer().setCurrentHp(this.returnPlayer().getCurrentHp() + 10);
-                        return true;
-                    }
+                    } return true;
                 } else {
                     return false;
                 }
@@ -145,7 +144,6 @@ public class PlayerRepository implements Combat {
                 if (s.getId().equals(0)){
                     s.setLevel(0);
                     s.setMaxDamage(s.getMaxDamage() + 5);
-                    System.out.println("entro a fuego");
                     return true;
                 }
                 if (s.getId().equals(1)){
