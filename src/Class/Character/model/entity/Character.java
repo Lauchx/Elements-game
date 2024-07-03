@@ -13,6 +13,7 @@ public class Character{
     protected Superpower superpower;
     public int positionX;
     public int positionY;
+    public boolean dead;
     
     public Character()
     {
@@ -25,6 +26,7 @@ public class Character{
         this.positionX = 0;
         this.positionY = 0;
         this.superpower = null;
+        this.dead = false;
     }
 
     public int getMaxHP() {
@@ -55,6 +57,8 @@ public class Character{
         return superpower;
     }
 
+
+
     public void setName(String name) {
         this.name = name;
     }
@@ -81,6 +85,10 @@ public class Character{
 
     public void setSuperpower(Superpower superpower) {
         this.superpower = superpower;
+    }
+
+    public void setDead(boolean dead) {
+        this.dead = dead;
     }
 
     @Override

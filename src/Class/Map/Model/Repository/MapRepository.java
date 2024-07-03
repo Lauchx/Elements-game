@@ -187,7 +187,7 @@ public class MapRepository {
         return false;
     }
 
-    public boolean enemyPositionMapY(Map map, EnemyController enemyController, int level) // Revisar si el método tiene que ser void!.
+    public boolean enemyPositionMapY(Map map, EnemyController enemyController, int level, PlayerControler playerControler) // Revisar si el método tiene que ser void!.
     {
         if (enemyController.returnEnemy() != null) {
             int azar = (int) (Math.random() * 2);
@@ -199,6 +199,8 @@ public class MapRepository {
                         enemyController.returnEnemy().setPositionY(enemyController.returnEnemy().getPositionY() - level);
                         this.addMapLevel(map, level);
                         return true;
+                    }else if (map.map[enemyController.returnEnemy().getPositionX()][enemyController.returnEnemy().getPositionY() - level].equals(playerControler.returnPlayer())){
+                        enemyController.enemyRepository.fight(enemyController, playerControler, Math.random() < 0.5 );
                     }
 
                 }
@@ -210,6 +212,8 @@ public class MapRepository {
                         enemyController.returnEnemy().setPositionY(enemyController.returnEnemy().getPositionY() + level);
                         this.addMapLevel(map, level);
                         return true;
+                    }else if (map.map[enemyController.returnEnemy().getPositionX()][enemyController.returnEnemy().getPositionY() + level].equals(playerControler.returnPlayer())){
+                        enemyController.enemyRepository.fight(enemyController, playerControler, Math.random() < 0.5 );
                     }
                 }
             }
@@ -219,7 +223,7 @@ public class MapRepository {
     }
 
 
-    public boolean enemyPositionMapX(Map map, EnemyController enemyController, int level) {
+    public boolean enemyPositionMapX(Map map, EnemyController enemyController, int level, PlayerControler playerControler) {
         if (enemyController.returnEnemy() != null) {
             int azar = (int) (Math.random() * 2);
             if (azar >= 1) {

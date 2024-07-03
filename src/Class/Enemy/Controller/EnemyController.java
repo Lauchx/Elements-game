@@ -5,8 +5,8 @@ import Class.Enemy.Model.Repository.EnemyRepository;
 import Class.Enemy.View.EnemyView;
 
 public class EnemyController {
-    private EnemyRepository enemyRepository;
-    private EnemyView enemyView;
+    public EnemyRepository enemyRepository;
+    public EnemyView enemyView;
 
     public EnemyController(EnemyRepository enemyRepository, EnemyView enemyView)
     {

@@ -14,12 +14,11 @@ public class EnemyView {
     public void showEnemy(EnemyRepository enemyRepository)
     {
         if(enemyRepository.returnEnemy() != null) {
-            System.out.println("Enemigo:" + enemyRepository.returnEnemy().getName());
-            System.out.println("maxhp: " + enemyRepository.returnEnemy().getMaxHP());
-            System.out.println("Currenthp: " + enemyRepository.returnEnemy().getCurrentHp());
-            System.out.println("Armour: " + enemyRepository.returnEnemy().getArmour());
-            System.out.println("maxDamage: " + enemyRepository.returnEnemy().getMaxDamage());
-            System.out.println("CurrentDamage: " + enemyRepository.returnEnemy().getCurrentDamage());
+            System.out.println("𝓔𝖓𝖊𝖒𝖎𝖌𝖔: " + enemyRepository.returnEnemy().getName());
+            System.out.println("𝓥𝖎𝖉𝖆: " + enemyRepository.returnEnemy().getCurrentHp());
+            System.out.println("𝓐𝖗𝖒𝖆𝖉𝖚𝖗𝖆: " + enemyRepository.returnEnemy().getArmour());
+            System.out.println("𝓖𝖔𝖑𝖕𝖊: " + enemyRepository.returnEnemy().getCurrentDamage());
+            System.out.println("--------------------------------");
         }
     }
 }

@@ -55,12 +55,12 @@ public class MapController {
             }
         }while (move.equals("i"));
     }
-    public void EnemyMove(EnemyController enemyController, int level)
+    public void EnemyMove(EnemyController enemyController, int level, PlayerControler playerControler)
     {
         Enemy enemy = new Enemy();
         if(enemyController.returnEnemy() != enemy){
-        this.mapRepository.enemyPositionMapX(this.mapRepository.mapArray[level], enemyController, level);
-        this.mapRepository.enemyPositionMapY(this.mapRepository.mapArray[level], enemyController, level);
+        this.mapRepository.enemyPositionMapX(this.mapRepository.mapArray[level], enemyController, level, playerControler);
+        this.mapRepository.enemyPositionMapY(this.mapRepository.mapArray[level], enemyController, level, playerControler);
         }
     }
     public void noMoveMore(boolean yesornot)

@@ -39,92 +39,33 @@ public class Program {
         playerControler.addPlayer();
         superpowerController.addSuperpower();
         playerControler.createSuperpowers(superpowerController.superpowerRepository);
-        playerControler.ShowPlayer();
         //String uno = "1";
         Scanner scanner = new Scanner(System.in);
-        System.out.println("〘Level 1〙〘Level 2〙〘Level 3〙〘Ayuda 0〙");
+        System.out.println("〘𝕷𝖊𝖛𝖊𝖑 1〙〘𝕷𝖊𝖛𝖊𝖑 2〙〘𝕷𝖊𝖛𝖊𝖑 3〙〘𝑨𝒚𝒖𝒅𝒂 0〙");
         int level = scanner.nextInt();
         scanner = new Scanner(System.in);
         boolean finished;
         enemyController.addEnemys(level);
         // en lugar de uin switch ya es el mismo codigo, tendria un if(level == 1 || level == 2 || level == 3 ) {un unico codigo} else { sout("no existe ese nivel");
         if (level == 1 || level == 2 || level == 3) {
-            System.out.println("'i' para más infomación");
+            System.out.println( "'𝖎' 𝖒á𝖘 𝖎𝖓𝖋𝖔𝖗𝖒𝖆𝖈𝖎ó𝖓.\n𝓟𝖆𝖗𝖆 𝖒𝖔𝖛𝖊𝖗𝖘𝖊 𝖚𝖘𝖆𝖗 𝖑𝖆𝖘 𝖙𝖊𝖈𝖑𝖆𝖘: \n╚» 𝓦 «╝ ▲ \n╚» 𝓐 «╝ ◀ \n╚» 𝓢 «╝ ▼ \n╚» 𝓓 «╝ ▶");
             mapController.CreateMap(level, playerControler, enemyController);
             do {
                 finished = mapController.show_MapLevel(level, enemyController, playerControler);
                 if (finished) {
+
                     mapController.playerMove(playerControler, level, enemyController, superpowerController);
-                    mapController.EnemyMove(enemyController, level);
+                    mapController.EnemyMove(enemyController, level, playerControler);
                 }
             } while (finished);
 
         } else if (level == 0) {
-            System.out.println("-El enemigo se moverá según el nivel de dificultad, puede ser 1 o varias casillas a la vez\n-El jugador solo se podrá mover una casilla\n-Los superpoderes aparecerá cuando aciertes en el casillero enemigo, si es que no existe un superpoder en el mapa\n -seguir");
+            System.out.println("-𝕰𝖑 𝖊𝖓𝖊𝖒𝖎𝖌𝖔 𝖘𝖊 𝖒𝖔𝖛𝖊𝖗á 𝖘𝖊𝖌ú𝖓 𝖊𝖑 𝖓𝖎𝖛𝖊𝖑 𝖉𝖊 𝖉𝖎𝖋𝖎𝖈𝖚𝖑𝖙𝖆𝖉, 𝖕𝖚𝖊𝖉𝖊 𝖘𝖊𝖗 1 𝖔 𝖛𝖆𝖗𝖎𝖆𝖘 𝖈𝖆𝖘𝖎𝖑𝖑𝖆𝖘 𝖆 𝖑𝖆 𝖛𝖊𝖟. \n -𝕰𝖑 𝖏𝖚𝖌𝖆𝖉𝖔𝖗 𝖘𝖔𝖑𝖔 𝖘𝖊 𝖕𝖔𝖉𝖗á 𝖒𝖔𝖛𝖊𝖗 𝖚𝖓𝖆 𝖈𝖆𝖘𝖎𝖑𝖑𝖆, 𝖓𝖔 𝖕𝖔𝖉𝖗á 𝖒𝖔𝖛𝖊𝖗𝖘𝖊 𝖊𝖓 𝖉𝖎𝖆𝖌𝖔𝖓𝖆𝖑. \n-𝕷𝖔𝖘 𝖘𝖚𝖕𝖊𝖗𝖕𝖔𝖉𝖊𝖗𝖊𝖘 𝖆𝖕𝖆𝖗𝖊𝖈𝖊𝖗á 𝖈𝖚𝖆𝖓𝖉𝖔 𝖆𝖈𝖎𝖊𝖗𝖙𝖊𝖘 𝖊𝖓 𝖊𝖑 𝖈𝖆𝖘𝖎𝖑𝖑𝖊𝖗𝖔 𝖊𝖓𝖊𝖒𝖎𝖌𝖔, 𝖘𝖎 𝖊𝖘 𝖖𝖚𝖊 𝖓𝖔 𝖊𝖝𝖎𝖘𝖙𝖊 𝖚𝖓 𝖘𝖚𝖕𝖊𝖗𝖕𝖔𝖉𝖊𝖗 𝖊𝖓 𝖊𝖑 𝖒𝖆𝖕𝖆. \n-𝖘𝖊𝖌𝖚𝖎𝖗");
         } else {
-            System.out.println("No existen mas niveles");
+            System.out.println("𝓝𝖔 𝖊𝖝𝖎𝖘𝖙𝖊𝖓 𝖒𝖆𝖘 𝖓𝖎𝖛𝖊𝖑𝖊𝖘");
         }
     }
 }
-//        switch (level)
-//        {
-//            case 1:
-//                // level 1
-//                mapController.CreateMap(level, playerControler, enemyController);
-//                do {
-//                    superpowerController.showSuperpower();
-//                    playerControler.ShowPlayer();
-//                    enemyController.showEnemy();
-//                    finished = mapController.show_MapLevel(level, enemyController, playerControler);
-//                    if (finished) {
-//                        mapController.playerMove(playerControler, level, enemyController, superpowerController);
-//                        mapController.EnemyMove(enemyController, level);
-//                    }
-//                }while(finished);
-//                break;
-//            case 2:
-//                // level 2
-//                mapController.CreateMap(level, playerControler, enemyController);
-//                do {
-//                    superpowerController.showSuperpower();
-//                    playerControler.ShowPlayer();
-//                    enemyController.showEnemy();
-//                    finished = mapController.show_MapLevel(level, enemyController, playerControler);
-//                    if (finished) {
-//                        mapController.playerMove(playerControler, level, enemyController, superpowerController);
-//                        mapController.EnemyMove(enemyController, level);
-//                    }
-//                }while(finished);
-//                break;
-//            case 3:
-//                // level 3
-//                mapController.CreateMap(level, playerControler, enemyController);
-//                do {
-//                    superpowerController.showSuperpower();
-//                    playerControler.ShowPlayer();
-//                    enemyController.showEnemy();
-//                    finished = mapController.show_MapLevel(level, enemyController, playerControler);
-//                    if (finished) {
-//                        mapController.playerMove(playerControler, level, enemyController, superpowerController);
-//                        mapController.EnemyMove(enemyController, level);
-//                    }
-//                }while (finished);
-//                break;
-//            default:
-//                System.out.println("NO existen mas niveles perrito malvado");
-//        }
-//        do
-//        {
-//            //PARA NO SER TAN ROMPE, TENDIRA QUE MOSTRAR SOLAMENTE SI ESCRIBE  i. Porque hay mucha info.
-//            superpowerController.showSuperpower();
-//            playerControler.ShowPlayer();
-//            enemyController.showEnemy();
-//           if(mapController.show_MapLevel(1, enemyController, playerControler))
-//            {
-//                mapController.playerMove(playerControler, 1, enemyController, superpowerController);
-//                mapController.EnemyMove(enemyController, 1);
-//            }
-//        }while(uno.equals("1"));
 
 
         /* Fuego te aumenta el daño

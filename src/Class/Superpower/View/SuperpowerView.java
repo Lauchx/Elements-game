@@ -17,7 +17,8 @@ public class SuperpowerView {
         for(Superpower s: superpowerRepository.superpowerList)
         {
             System.out.println(s);
-            System.out.println(s.getId() + " Level:" + s.getLevel() + " Name:" + s.getName());
+            System.out.println("𝓛𝖊𝖛𝖊𝖑:" + s.getLevel() + " 𝓝𝖆𝖒𝖊:" + s.getName());
+            System.out.println("--------------------------------");
         }
     }
 }

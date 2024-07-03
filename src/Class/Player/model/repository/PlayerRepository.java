@@ -32,9 +32,12 @@ public class PlayerRepository implements Combat {
     {
         for(Player p: playerList)
         {
-            if(p.getId().equals(1)   ){
-                return p;
+            if(!p.dead) {
+                if (p.getId().equals(1)) {
+                    return p;
+                }
             }
+
         }
         return null;
     }
@@ -50,7 +53,8 @@ public class PlayerRepository implements Combat {
         {
             if ((enemyController.returnEnemy().getCurrentHp() - this.returnPlayer().getMaxDamage()) + enemyController.returnEnemy().getArmour() > 0 ) {
             enemyController.returnEnemy().setCurrentHp((enemyController.returnEnemy().getCurrentHp() - this.returnPlayer().getMaxDamage()) + enemyController.returnEnemy().getArmour());
-            playerControler.returnPlayer().setCurrentHp((playerControler.returnPlayer().getCurrentHp() - (enemyController.returnEnemy().getCurrentDamage() / 4) + playerControler.returnPlayer().getArmour()) );
+            playerControler.returnPlayer().setCurrentHp((playerControler.returnPlayer().getCurrentHp() - (enemyController.returnEnemy().getCurrentDamage() / 4) + (playerControler.returnPlayer().getArmour())/4) );
+            if(playerControler.returnPlayer().getCurrentHp() <= 0) playerControler.returnPlayer().setDead(true);
             }else {
                 enemyController.returnEnemy().setCurrentHp(0);
                 enemyController.returnEnemy().setDead(true);
@@ -59,8 +63,10 @@ public class PlayerRepository implements Combat {
         {
             if((enemyController.returnEnemy().getCurrentHp() - this.returnPlayer().getCurrentDamage()) + enemyController.returnEnemy().getArmour() > 0) {
                 enemyController.returnEnemy().setCurrentHp((enemyController.returnEnemy().getCurrentHp() - this.returnPlayer().getCurrentDamage()) + enemyController.returnEnemy().getArmour());
-                playerControler.returnPlayer().setCurrentHp((playerControler.returnPlayer().getCurrentHp() - (enemyController.returnEnemy().getCurrentDamage() / 4) + playerControler.returnPlayer().getArmour()) );
+                playerControler.returnPlayer().setCurrentHp((playerControler.returnPlayer().getCurrentHp() - (enemyController.returnEnemy().getCurrentDamage() / 4) + (playerControler.returnPlayer().getArmour())/4) );
+                if(playerControler.returnPlayer().getCurrentHp() <= 0) playerControler.returnPlayer().setDead(true);
             }else {
+                enemyController.returnEnemy().setCurrentHp(0);
                 enemyController.returnEnemy().setDead(true);
             }
         }
@@ -98,8 +104,8 @@ public class PlayerRepository implements Combat {
             if (superpower.getId().equals(0)) {
                 if (superpower.getLevel() != 5) {
                     superpower.setLevel(superpower.getLevel() + 1);
-                    if (this.returnPlayer().getCurrentDamage() + 5 <= this.returnPlayer().getMaxDamage()) {
-                        this.returnPlayer().setCurrentDamage(this.returnPlayer().getCurrentDamage() + 5);
+                    if (this.returnPlayer().getCurrentDamage() + 4 <= this.returnPlayer().getMaxDamage()) {
+                        this.returnPlayer().setCurrentDamage(this.returnPlayer().getCurrentDamage() + 4);
                     }
                     return true;
                 } else {
@@ -108,8 +114,8 @@ public class PlayerRepository implements Combat {
             } else if (superpower.getId().equals(1)) {
                 if (superpower.getLevel() != 5) {
                     superpower.setLevel(superpower.getLevel() + 1);
-                    if(this.returnPlayer().getCurrentDamage() + 5 <= this.returnPlayer().getMaxDamage()) {
-                        this.returnPlayer().setCurrentDamage(this.returnPlayer().getCurrentDamage() + 5);
+                    if(this.returnPlayer().getCurrentDamage() + 4 <= this.returnPlayer().getMaxDamage()) {
+                        this.returnPlayer().setCurrentDamage(this.returnPlayer().getCurrentDamage() + 4);
                     }
                     return true;
                 } else {
@@ -143,12 +149,12 @@ public class PlayerRepository implements Combat {
             if (s.getLevel() == 5) {
                 if (s.getId().equals(0)){
                     s.setLevel(0);
-                    s.setMaxDamage(s.getMaxDamage() + 5);
+                    s.setMaxDamage(s.getMaxDamage() + 8);
                     return true;
                 }
                 if (s.getId().equals(1)){
                     s.setLevel(0);
-                    s.setMaxDamage(s.getMaxDamage() + 5);
+                    s.setMaxDamage(s.getMaxDamage() + 8);
                     return true;
                 }
                 if (s.getId().equals(2)){

@@ -14,8 +14,9 @@ public class Player extends Character {
     super.setMaxHP(100);
     super.setCurrentHp(80);
     super.setArmour(0);
-    super.setMaxDamage(10);
-    super.setCurrentDamage(88);
+    super.setMaxDamage(15);
+    super.setCurrentDamage(5);
+    super.dead = false;
     this.superpowerRepository = new SuperpowerRepository();
     super.positionX = 0;
     super.positionY = 0;
@@ -32,7 +33,6 @@ public class Player extends Character {
     public Integer getId() {
         return id;
     }
-
     public SuperpowerRepository getSuperpowerRepository() {
         return superpowerRepository;
     }
@@ -45,10 +45,10 @@ public class Player extends Character {
         this.positionX = positionX;
     }
 
-
     public void setPositionY(int positionY) {
         this.positionY = positionY;
     }
+
 
     @Override
     public String toString()

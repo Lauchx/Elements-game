@@ -30,20 +30,6 @@ public class SuperpowerRepository {
         return superpower;
     }
 
-    public boolean SearchSuperpower(Character character) {
-        for (int i = 0; i < this.superpowerList.size(); i++) {
-            if (character.equals(this.superpowerList)) {
-            }
-        }
-//     for(Superpower s: this.superpowerList)
-//     {
-//         if(s.getId().equals((Superpower) character.get)
-//         character = s;
-//         s = character;
-//     }
-        return false;
-
-    }
     public Superpower getFire(){
         return this.superpowerList.get(0);
     }

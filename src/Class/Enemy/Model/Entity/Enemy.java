@@ -4,7 +4,6 @@ import Class.Character.model.entity.Character;
 
 public class Enemy extends Character {
 
-    public boolean dead;
 
     public Enemy() {
     }
@@ -14,11 +13,11 @@ public class Enemy extends Character {
         super.maxHP = (int) (Math.random() * (130 - 90 + 1) + 90);
         super.currentHp = super.maxHP;
         super.armour = (int) (Math.random() * (2 - 5 + 1) + 5);
-        super.currentDamage = (int) (Math.random() * (20 - 10 + 1) + 10);
+        super.currentDamage = (int) (Math.random() * (15 - 10 + 1) + 10);
         super.maxDamage = super.currentDamage * 2;
         super.positionX = (int) (Math.random() * x);
         super.positionY = (int) (Math.random() * y + 2);
-        this.dead = false;
+        super.dead = false;
     }
 
     public int getPositionX() {
